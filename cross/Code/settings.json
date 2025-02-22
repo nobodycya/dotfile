@@ -1,0 +1,89 @@
+{
+    //* BUILTIN *//
+    "accessibility.dimUnfocused.enabled": true,
+    "accessibility.dimUnfocused.opacity": 0.75,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": -1.0,
+    "workbench.startupEditor": "none",
+    "workbench.activityBar.location": "top",
+    "editor.tabSize": 2,
+    "[python]": {
+        "editor.tabSize": 4
+    },
+    "[json]": {
+        "editor.tabSize": 4
+    },
+    "[jsonc]": {
+        "editor.tabSize": 4
+    },
+    //* vim *//
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "vim.autoindent": true,
+    "vim.handleKeys": {},
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.leader": "\\",
+    "vim.ignorecase": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "<leader>",
+                "<leader>"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "n"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+    ],
+    "vim.smartRelativeLine": true,
+    "vim.showcmd": true,
+    "vim.showmodename": true,
+    "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
+    "vim.whichwrap": "b,s",
+    "vim.highlightedyank.enable": true
+}

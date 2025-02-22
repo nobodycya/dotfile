@@ -1,0 +1,46 @@
+""" OPTION """
+set history=5000
+set number
+set relativenumber
+set showmode
+set showcmd
+set smartcase
+set hlsearch
+set ignorecase
+set incsearch
+set visualbell
+set timeout
+set timeoutlen=2400
+set clipboard^=unnamed,unnamedplus
+set colorcolumn=80
+set cursorline
+
+""" OPTIONS ONLY FOR IDEA """
+set ideajoin
+set ideamarks
+set idearefactormode=normal
+set ideastatusicon=enable
+
+""" KEYBINDING """
+let mapleader="\<space>"
+let maplocalleader="\\"
+inoremap jk <esc>
+cnoremap jk <c-c>
+vnoremap jk <esc>
+
+""" PLUGIN: HIGHLIGHTEDYANK """
+set highlightedyank
+let g:highlightedyank_highlight_duration="2400"
+
+""" PLUGIN: WHICH-KEY """
+set which-key
+
+""" PLUGIN: COMMENTARY """
+set commentary
+
+""" PLUGIN: NERDTREE """
+set nerdtree
+nnoremap <leader>tn :NERDTreeToggle<CR>
+
+""" PLUGIN: MATCHIT """
+set matchit
