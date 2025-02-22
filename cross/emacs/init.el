@@ -28,8 +28,6 @@
   :ensure nil
   :custom
   (package-enable-at-startup nil)
-  (package-vc-register-as-project nil)
-  (use-package-enable-imenu-support t)
   :config
   (when (or (featurep 'esup-child)
             (daemonp)
