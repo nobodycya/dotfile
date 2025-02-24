@@ -335,6 +335,13 @@ augroup LOAD_ASYNCOMPLETE_LSP_SNIPPET
     \ 'initialization_options': { 'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp }
     \ })
     \| endif
+    \| if executable('lua-language-server')
+    \| call lsp#register_server({
+    \ 'name': 'lua-language-server',
+    \ 'cmd': { server_info -> ['lua-language-server'] },
+    \ 'whitelist': ['lua']
+    \ })
+    \| endif
 augroup END
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
