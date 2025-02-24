@@ -163,6 +163,7 @@ body,
 .cpu .text {
   background: #181818;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 .cpu i {
@@ -195,6 +196,7 @@ body,
 .memory .text {
   background: #181818;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 .memory i {
@@ -227,6 +229,7 @@ body,
 .audio .text {
   background: #181818;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 .audio i {
@@ -259,6 +262,7 @@ body,
 .battery .text {
   background: #181818;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 .battery i {
@@ -286,6 +290,7 @@ body,
   border: 2px solid #292e42;
   border-radius: 4px;
   padding: 4px;
+  white-space: nowrap;
 }
 
 .network_down i {
@@ -302,6 +307,7 @@ body,
   border: 2px solid #292e42;
   border-radius: 4px;
   padding: 4px;
+  white-space: nowrap;
 }
 
 .network_up i {
@@ -318,6 +324,7 @@ body,
   border: 2px solid #292e42;
   border-radius: 4px;
   padding: 4px;
+  white-space: nowrap;
 }
 
 .date i {
