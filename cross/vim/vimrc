@@ -283,12 +283,12 @@ imap <expr><Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : pumvisibl
 smap <expr><Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : pumvisible() ? "\<C-n>" : "\<Tab>"
 imap <expr><S-Tab> vsnip#available(1) ? '<Plug>(vsnip-jump-prev)' : pumvisible() ? "\<C-p>" : "\<S-Tab>"
 smap <expr><S-Tab> vsnip#available(1) ? '<Plug>(vsnip-jump-prev)' : pumvisible() ? "\<C-p>" : "\<S-Tab>"
-augroup LOAD_ASYNCOMPLETE_AND_SNIPPET
+augroup LOAD_ASYNCOMPLETE_LSP_SNIPPET
   autocmd!
   autocmd InsertEnter * call plug#load('asyncomplete.vim', 'asyncomplete-buffer.vim',
     \ 'asyncomplete-file.vim', 'asyncomplete-lsp.vim', 'vim-lsp', 'vim-vsnip',
     \ 'vim-vsnip-integ')
-    \| autocmd! LOAD_ASYNCOMPLETE_AND_SNIPPET
+    \| autocmd! LOAD_ASYNCOMPLETE_LSP_SNIPPET
     \| let g:lsp_diagnostics_enabled = 0
     \| call asyncomplete#enable_for_buffer()
     \| call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
