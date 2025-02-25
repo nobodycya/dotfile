@@ -6,21 +6,6 @@
 " https://gitee.com/mirrorvim/vim-fast/blob/master/vimrc-no-plug
 " https://github.com/chenxuan520/vim-fast
 
-""" GUI """
-if has('gui-running')
-  if has('unix')
-    set guifont=JetBrainsMono\ Nerd\ Font:h12
-  elseif has('win32') || has('win64')
-    set guifont=Consolas:h10
-  elseif has('mac')
-    set guifont=Menlo:h12
-  endif
-  set guioptions-=T
-  set guioptions-=m
-  set guioptions-=r
-  set listchars=tab:▸\ ,space:·
-endif
-
 """ OPTION """
 filetype on
 filetype plugin on
@@ -127,22 +112,14 @@ call plug#begin()
 Plug 'sheerun/vim-polyglot', { 'on': [] }
 Plug 'morhetz/gruvbox', { 'on': [] }
 Plug 'vim-airline/vim-airline', { 'on': [] }
-Plug 'ntpeters/vim-better-whitespace', { 'on': [] }
-Plug 'machakann/vim-highlightedyank', { 'on': [] }
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
 Plug 'tpope/vim-commentary', { 'on': [] }
-Plug 'wellle/context.vim', { 'on': [] }
-Plug 'airblade/vim-gitgutter', { 'on': [] }
 Plug 'dense-analysis/ale', { 'on': [] }
-Plug 'ap/vim-css-color', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'thinca/vim-quickrun', { 'on': ['QuickRun'] }
-Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle'] }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle'] }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Buffers', 'Colors', 'Lines', 'BLines', 'History', 'Commands', 'Rg'] }
-Plug 'liuchengxu/vista.vim', { 'on': ['Vista', 'Vista!', 'Vista!!'] }
 Plug 'prabirshrestha/asyncomplete.vim', { 'on': [] }
 Plug 'prabirshrestha/asyncomplete-buffer.vim', { 'on': [] }
 Plug 'prabirshrestha/asyncomplete-file.vim', { 'on': [] }
@@ -163,7 +140,7 @@ augroup END
 " GRUVBOX
 augroup LOAD_GRUVBOX
   autocmd!
-  autocmd BufReadPost,BufEnter * call plug#load('gruvbox')
+  autocmd BufReadPost * call plug#load('gruvbox')
     \| autocmd! LOAD_GRUVBOX
     \| colorscheme gruvbox
 augroup END
@@ -174,21 +151,6 @@ augroup LOAD_VIM_AIRLINE
   autocmd BufReadPost,BufEnter * call plug#load('vim-airline')
     \| autocmd! LOAD_VIM_AIRLINE
     \| let g:airline_extensions = ['branch', 'tabline']
-augroup END
-
-" VIM-BETTER-WHITESPACE
-augroup LOAD_VIM_BETTER_WHITESPACE
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-better-whitespace')
-    \| autocmd! LOAD_VIM_BETTER_WHITESPACE
-augroup END
-
-" VIM-HIGHLIGHTEDYANK
-augroup LOAD_VIM_HIGHLIGHTEDYANK
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-highlightedyank')
-    \| autocmd! LOAD_VIM_HIGHLIGHTEDYANK
-    \| let g:highlightedyank_highlight_duration = 2500
 augroup END
 
 " AUTO-PAIRS
@@ -215,34 +177,11 @@ augroup LOAD_VIM_COMMENTARY
     \| autocmd! LOAD_VIM_COMMENTARY
 augroup END
 
-" CONTEXT.VIM
-augroup LOAD_CONTEXT_VIM
-  autocmd!
-  autocmd BufReadPost * call plug#load('context.vim')
-    \| autocmd! LOAD_CONTEXT_VIM
-    \| let g:context_max_height = 1
-augroup END
-
-" VIM-GITGUTTER
-augroup LOAD_VIM_GITGUTTER
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-gitgutter')
-    \| autocmd! LOAD_VIM_GITGUTTER
-    \| call gitgutter#enable()
-augroup END
-
 " ALE
 augroup LOAD_ALE
   autocmd!
   autocmd BufReadPost * call plug#load('ale')
     \| autocmd! LOAD_ALE
-augroup END
-
-" VIM-CSS-COLOR
-augroup LOAD_VIM_CSS_COLOR
-  autocmd!
-  autocmd BufReadPre * call plug#load('vim-css-color')
-    \| autocmd! LOAD_VIM_CSS_COLOR
 augroup END
 
 " VIM-WHICH-KEY
@@ -251,11 +190,6 @@ nnoremap <silent><localleader> :<C-u>WhichKey '<Space>'<cr>
 
 " QUICKRUN
 nnoremap <leader>RR :QuickRun<cr>
-
-" NERDTREE & NERDTREE-GIT-PLUGIN
-let g:NERDTreeWinSize = 23
-let g:NERDTreeShowHidden = 1
-nnoremap <leader>tn :NERDTreeToggle<cr>
 
 " FZF & FZF.VIM
 let g:fzf_layout={ 'down': '40%' }
@@ -267,10 +201,6 @@ nnoremap <leader>fs :BLines<cr>
 nnoremap <leader>fr :History<cr>
 nnoremap <leader>fc :Colors<cr>
 nnoremap <leader><leader> :Commands<cr>
-
-" VISTA
-let g:vista_default_executive = 'vim_lsp'
-nnoremap <leader>tv :Vista!!<cr>
 
 " ASYNCOMPLETE.VIM
 " ASYNCOMPLETE-BUFFER.VIM
