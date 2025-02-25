@@ -86,14 +86,6 @@
                   (vertical-scroll-bars)
                   (horizontal-scroll-bars))))
 
-(use-package modus-themes
-  :ensure nil
-  :hook (after-init . (lambda () (load-theme 'modus-vivendi t))))
-
-(use-package pixel-scroll
-  :ensure nil
-  :hook (after-init . pixel-scroll-precision-mode))
-
 (use-package startup
   :ensure nil
   :hook
@@ -110,12 +102,6 @@
   (initial-scratch-message
    (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n")))
 
-(use-package pixel-scroll
-  :ensure nil
-  :when (fboundp 'pixel-scroll-precision-mode)
-  :config
-  (pixel-scroll-precision-mode))
-
 (use-package cus-edit
 	:ensure nil
 	:custom
@@ -129,21 +115,14 @@
   (setq which-key-show-docstrings t)
 	(which-key-mode))
 
-(use-package tab-line
-  :ensure nil
-  :init
-  (setq tab-line-close-button-show nil)
-  (setq tab-line-new-button-show nil)
-  :hook (after-init . global-tab-line-mode))
-
 (use-package simple
-	:ensure nil
-	:hook
-	(prog-mode . column-number-mode)
-	(prog-mode . line-number-mode)
-	(prog-mode . size-indication-mode)
-	:config
-	(setq-default indent-tabs-mode nil)
+  :ensure nil
+  :hook
+  (prog-mode . column-number-mode)
+  (prog-mode . line-number-mode)
+  (prog-mode . size-indication-mode)
+  :config
+  (setq-default indent-tabs-mode nil)
   (setq blink-matching-paren-highlight-offscreen t)
   (setq-default idle-update-delay 1.0))
 
