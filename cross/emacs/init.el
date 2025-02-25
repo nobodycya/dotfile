@@ -58,6 +58,9 @@
   (setq scroll-conservatively 10000)
   (setq auto-window-vscroll nil)
   (setq scroll-preserve-screen-position t)
+  (setq-default read-process-output-max 1048576)
+  (setq-default max-mini-window-height 0.4)
+  (setq-default read-buffer-completion-ignore-case t)
   (setq-default cursor-in-non-selected-windows nil)
   (setq-default highlight-nonselected-windows nil)
   (setq-default bidi-display-reordering nil)
@@ -316,7 +319,7 @@
   (setq evil-want-keybinding nil)
   :config
   (setq evil-normal-state-cursor 'box)
-  (setq evil-emacs-state-cursor  'box)
+  (setq evil-emacs-state-cursor 'box)
   (setq evil-insert-state-cursor 'bar)
   (setq evil-visual-state-cursor 'hollow))
 
@@ -342,169 +345,8 @@
   (:map evil-visual-state-map
         (("gc" . evilnc-comment-or-uncomment-lines))))
 
-(use-package evil-goggles
-  :hook (evil-mode . evil-goggles-mode)
-  :config
-  (setq evil-goggles-pulse t)
-  (setq evil-goggles-duration 2.400))
-
-(use-package company
-  :hook (prog-mode . company-mode)
-  :config
-  (setq company-idle-delay 0.1)
-  (setq company-minimum-prefix-length 1)
-  (setq company-global-modes '(not
-                               eshell-mode
-                               message-mode
-                               help-mode
-                               vterm-mode))
-  (setq company-tooltip-limit 10)
-  (setq company-text-icons-add-background t)
-  (setq company-icon-margin 4)
-  (setq company-tooltip-align-annotations t)
-  (setq company-require-match 'never)
-  (setq company-dabbrev-ignore-case nil)
-  (setq company-dabbrev-downcase nil)
-  (setq company-backends
-        '((company-bbdb :with company-yasnippet)
-          (company-semantic :with company-yasnippet)
-          (company-cmake :with company-yasnippet)
-          (company-capf :with company-yasnippet)
-          (company-clang :with company-yasnippet)
-          (company-files :with company-yasnippet)
-          (company-oddmuse :with company-yasnippet)
-          (company-dabbrev :with company-yasnippet)
-          ((company-dabbrev-code company-gtags company-etags company-keywords) :with company-yasnippet))))
-
-(use-package company-quickhelp
-  :when (display-graphic-p)
-  :hook (company-mode . company-quickhelp-mode))
-
-(use-package yasnippet
-  :hook (prog-mode . yas-global-mode))
-
-(use-package yasnippet-snippets
-  :after yasnippet)
-
-(use-package ivy
-  :defer 0.5
-  :config
-  (setq-default ivy-use-virutal-buffers t)
-  (setq enable-recursive-minibuffers t)
-  (setq ivy-height 13)
-  (setq ivy-fixed-height-minibuffer t)
-  (setq ivy-virtual-abbreviate 'full)
-  (setq ivy-use-selectable-prompt t)
-  (setq ivy-initial-inputs-alist nil)
-  (setq ivy-count-format "[%d/%d] ")
-  (setq ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
-  (ivy-mode))
-
-(use-package counsel
-  :hook (ivy-mode . counsel-mode))
-
-(use-package swiper
-  :bind (("C-s" . swiper-isearch-backward)))
-
-(use-package wgrep
-  :commands (wgrep-change-to-wgrep-mode)
-  :config
-  (setq wgrep-auto-save-buffer t))
-
-(use-package amx
-  :hook (ivy-mode . amx-mode))
-
-(use-package avy
-  :bind
-  (("M-g M-l" . avy-goto-line)
-   ("M-g M-w" . avy-goto-word-0)
-   ("M-g M-c" . avy-goto-char-timer)))
-
-(use-package flycheck
-  :hook (prog-mode . global-flycheck-mode)
-  :bind
-  (("M-n" . flycheck-next-error)
-   ("M-p" . flycheck-previous-error)))
-
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package colorful-mode
-  :hook (prog-mode . colorful-mode))
-
-(use-package lsp-mode
-  :commands (lsp))
-
-(use-package helpful
-  :bind
-  (([remap describe-key] . helpful-key)
-   ([remap describe-function] . helpful-callable)
-   ([remap describe-variable] . helpful-variable)
-   ([remap describe-command] . helpful-command)
-   ("C-c C-d" . helpful-at-point)))
-
-(use-package hl-todo
-  :hook (prog-mode . hl-todo-mode)
-  :config
-  (setq hl-todo-highlight-punctuation ":")
-  (setq hl-todo-keyword-faces
-        '(("TODO" warning bold)
-          ("FIXME" error bold)
-          ("REVIEW" font-lock-keyword-face bold)
-          ("HACK" font-lock-constant-face bold)
-          ("DEPRECATED" font-lock-doc-face bold)
-          ("NOTE" success bold)
-          ("BUG" error bold)
-          ("XXX" font-lock-constant-face bold))))
-
-(use-package symbol-overlay
-  :bind
-  (("M-i" . symbol-overlay-put)
-   ("M-g M-n" . symbol-overlay-switch-forward)
-   ("M-g M-p" . symbol-overlay-switch-backward)
-   ("M-g M-r" . symbol-overlay-remove-all)))
-
-(use-package diredfl
-  :hook (dired-mode . diredfl-mode))
-
-(use-package ace-window
-  :bind
-  ([remap other-window] . ace-window)
-  :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
-
-(use-package winum
-  :defer 5
-  :config
-  (setq winum-format "[%s]")
-  (setq winum-mode-line-position 0)
-  (winum-mode))
-
-(use-package lua-mode
-  :config
-  (setq lua-indent-level 2)
-  (setq lua-indent-nested-block-content-align nil)
-  (setq lua-indent-close-paren-align nil))
-
-(use-package csv-mode)
-(use-package toml-mode)
-(use-package json-mode)
-(use-package yaml-mode)
-(use-package markdown-mode)
-(use-package vimrc-mode)
-
-(use-package xclip
-  :defer 2
-  :config
-  (xclip-mode))
-
-(use-package gcmh
-  :defer 5
-  :config
-  (gcmh-mode))
-
-(use-package git-gutter
-  :hook (prog-mode . git-gutter-mode))
 
 (provide 'init)
 ;;; Local Variables:
