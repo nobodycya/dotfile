@@ -48,6 +48,11 @@ set timeoutlen=200
 set pumheight=12
 set pumwidth=20
 let g:vim_indent_cont = &sw
+if v:version >= 900
+  colorscheme habamax
+else
+  colorscheme desert
+endif
 
 """ KEYBINDING """
 let mapleader = '\'
@@ -110,7 +115,6 @@ autocmd BufWinEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 """ INSTALL PLUGINS """
 call plug#begin()
 Plug 'sheerun/vim-polyglot', { 'on': [] }
-Plug 'morhetz/gruvbox', { 'on': [] }
 Plug 'vim-airline/vim-airline', { 'on': [] }
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
@@ -135,14 +139,6 @@ augroup LOAD_VIM_POLYGLOT
   autocmd!
   autocmd InsertEnter * call plug#load('vim-polyglot')
     \| autocmd! LOAD_VIM_POLYGLOT
-augroup END
-
-" GRUVBOX
-augroup LOAD_GRUVBOX
-  autocmd!
-  autocmd BufReadPost * call plug#load('gruvbox')
-    \| autocmd! LOAD_GRUVBOX
-    \| colorscheme gruvbox
 augroup END
 
 " VIM-AIRLINE
