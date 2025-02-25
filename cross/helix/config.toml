@@ -10,6 +10,7 @@ text-width = 80
 rulers = [80]
 color-modes = true
 bufferline = "always"
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
