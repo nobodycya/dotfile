@@ -176,11 +176,11 @@ body,
 }
 
 .cpu i.medium {
-  color: #d7ba7d;
+  color: #cd9731;
 }
 
 .cpu i.light {
-  color: #cd9731;
+  color: #d7ba7d;
 }
 
 .memory {
@@ -209,11 +209,11 @@ body,
 }
 
 .memory i.medium {
-  color: #d7ba7d;
+  color: #cd9731;
 }
 
 .memory i.light {
-  color: #cd9731;
+  color: #d7ba7d;
 }
 
 .audio {
@@ -242,11 +242,11 @@ body,
 }
 
 .audio i.medium {
-  color: #d7ba7d;
+  color: #cd9731;
 }
 
 .audio i.light {
-  color: #cd9731;
+  color: #d7ba7d;
 }
 
 .battery {
