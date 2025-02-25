@@ -147,14 +147,6 @@
   (setq window-divider-default-right-width 1)
   (setq window-divider-default-bottom-width 1))
 
-(use-package mwheel
-  :ensure nil
-  :when (display-graphic-p)
-  :config
-  (setq mouse-wheel-scroll-amount '(1 ((shift) . hscroll)))
-  (setq mouse-wheel-scroll-amount-horizontal 1)
-  (setq mouse-wheel-progressive-speed nil))
-
 (use-package files
   :ensure nil
   :hook (after-init . auto-save-visited-mode)
@@ -162,12 +154,6 @@
   (setq auto-save-default nil)
   (setq make-backup-files nil)
   (setq auto-mode-case-fold nil))
-
-(use-package repeat
-  :ensure nil
-  :hook (after-init . repeat-mode)
-  :config
-  (setq repeat-exit-key (kbd "RET")))
 
 (use-package autorevert
   :ensure nil
