@@ -357,6 +357,26 @@ require("lazy").setup({
       "AstroNvim/astrocommunity",
       import = "astrocommunity.diagnostics.trouble-nvim",
     },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.code-runner.executor-nvim",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.debugging.nvim-dap-repl-highlights",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.debugging.nvim-dap-virtual-text",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.utility.neodim",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.utility.noice-nvim",
+    },
   },
   local_spec = true,
   profiling = {
