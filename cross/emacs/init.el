@@ -348,6 +348,12 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package awesome-tray
+  :vc (:url "https://github.com/manateelazycat/awesome-tray")
+  :defer 2
+  :config
+  (awesome-tray-mode))
+
 (provide 'init)
 ;;; Local Variables:
 ;;; no-byte-compile: t
