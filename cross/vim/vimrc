@@ -17,7 +17,7 @@ set backspace=indent,eol,start
 set ruler
 set number
 set relativenumber
-set cursorline
+set nocursorline
 set nocursorcolumn
 set colorcolumn=0
 set splitbelow
