@@ -11,6 +11,7 @@
     "editor.minimap.enabled": false,
     "editor.tabSize": 2,
     "editor.semanticHighlighting.enabled": true,
+    "editor.renderLineHighlight": "none",
     "window.zoomLevel": -0.5,
     "workbench.startupEditor": "none",
     "terminal.integrated.minimumContrastRatio": 1,
