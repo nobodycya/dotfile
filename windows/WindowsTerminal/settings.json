@@ -86,15 +86,25 @@
         "useAcrylic": false
       },
       {
+        "antialiasingMode": "cleartype",
+        "autoMarkPrompts": false,
+        "bellStyle": ["audible", "window", "taskbar"],
+        "colorScheme": "MyTheme",
+        "cursorShape": "filledBox",
+        "elevate": false,
+        "experimental.retroTerminalEffect": false,
+        "experimental.rightClickContextMenu": true,
         "font": {
           "cellHeight": "1.618",
           "face": "'JetBrainsMono Nerd Font'",
-          "size": 8
+          "size": 9
         },
         "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
         "hidden": false,
         "name": "Git Bash",
-        "source": "Git"
+        "source": "Git",
+        "opacity": 95,
+        "padding": "12",
       },
       {
         "font": {
