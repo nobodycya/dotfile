@@ -101,7 +101,7 @@ autocmd FileType help noremap <buffer>q :bd<cr>
 autocmd FileType c,cpp setlocal commentstring=//\ %s
 autocmd FileType * syntax sync minlines=200
 
-""" INSTALL VIM-PLUG """
+""" VIM-PLUG """
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd BufWinEnter * PlugInstall --sync
@@ -115,7 +115,7 @@ autocmd BufWinEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 """ INSTALL PLUGINS """
 call plug#begin()
 Plug 'sheerun/vim-polyglot', { 'on': [] }
-Plug 'vim-airline/vim-airline', { 'on': [] }
+Plug 'itchyny/lightline.vim', { 'on': [] }
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
 Plug 'tpope/vim-commentary', { 'on': [] }
@@ -141,12 +141,11 @@ augroup LOAD_VIM_POLYGLOT
     \| autocmd! LOAD_VIM_POLYGLOT
 augroup END
 
-" VIM-AIRLINE
-augroup LOAD_VIM_AIRLINE
+" LIGHTLINE.VIM
+augroup LOAD_LIGHTLINE_VIM
   autocmd!
-  autocmd BufReadPost,BufEnter * call plug#load('vim-airline')
-    \| autocmd! LOAD_VIM_AIRLINE
-    \| let g:airline_extensions = ['branch', 'tabline']
+  autocmd BufReadPost * call plug#load('lightline.vim')
+    \| autocmd! LOAD_LIGHTLINE_VIM
 augroup END
 
 " AUTO-PAIRS
@@ -266,6 +265,13 @@ augroup LOAD_ASYNCOMPLETE_LSP_SNIPPET
     \ 'name': 'lua-language-server',
     \ 'cmd': { server_info -> ['lua-language-server'] },
     \ 'whitelist': ['lua']
+    \ })
+    \| endif
+    \| if executable('gopls')
+    \| call lsp#register_server({
+    \ 'name': 'gopls',
+    \ 'cmd': { server_info -> ['gopls', '-remote=auto'] },
+    \ 'whitelist': ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']
     \ })
     \| endif
 augroup END
