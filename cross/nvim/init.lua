@@ -7,11 +7,6 @@
 -- https://github.com/ayamir/nvimdots
 -- https://github.com/nvim-lua/kickstart.nvim
 
---- LAZYVIM SETTING ---
-vim.b.autoformat = false
-vim.g.lazyvim_python_lsp = "basedpyright"
-vim.g.lazyvim_prettier_needs_config = false
-
 --- OPTION ---
 vim.opt.clipboard = "unnamedplus,unnamed"
 vim.opt.colorcolumn = "0"
@@ -110,10 +105,10 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.cmd("close")
         pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
       end, {
-          buffer = event.buf,
-          silent = true,
-          desc = "Quit buffer",
-        })
+        buffer = event.buf,
+        silent = true,
+        desc = "Quit buffer",
+      })
     end)
   end,
 })
@@ -227,9 +222,6 @@ require("lazy").setup({
     -- {
     --   "LazyVim/LazyVim",
     --   import = "lazyvim.plugins",
-    --   opts = {
-    --     colorscheme = "tokyonight-night",
-    --   },
     -- },
     -- {
     --   "LazyVim/LazyVim",
@@ -238,6 +230,26 @@ require("lazy").setup({
     -- {
     --   "LazyVim/LazyVim",
     --   import = "lazyvim.plugins.extras.lang.python",
+    -- },
+    -- {
+    --   "LazyVim/LazyVim",
+    --   import = "lazyvim.plugins.extras.lang.typescript",
+    -- },
+    -- {
+    --   "LazyVim/LazyVim",
+    --   import = "lazyvim.plugins.extras.lang.go",
+    -- },
+    -- {
+    --   "LazyVim/LazyVim",
+    --   import = "lazyvim.plugins.extras.lang.json",
+    -- },
+    -- {
+    --   "LazyVim/LazyVim",
+    --   import = "lazyvim.plugins.extras.lang.toml",
+    -- },
+    -- {
+    --   "LazyVim/LazyVim",
+    --   import = "lazyvim.plugins.extras.lang.yaml",
     -- },
     -- AstroNvim --
     {
@@ -256,6 +268,26 @@ require("lazy").setup({
     {
       "AstroNvim/astrocommunity",
       import = "astrocommunity.pack.python",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.pack.typescript",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.pack.go",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.pack.json",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.pack.toml",
+    },
+    {
+      "AstroNvim/astrocommunity",
+      import = "astrocommunity.pack.yaml",
     },
   },
   local_spec = true,
