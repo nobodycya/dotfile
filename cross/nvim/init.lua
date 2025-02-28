@@ -56,6 +56,15 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { desc = "Move to Up Window" })
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { desc = "Move to Right Window" })
 
 --- AUTOCMD ---
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("ChangeTabSizeWithSpecificFileType", { clear = true }),
+	pattern = { "python", "json", "jsonc" },
+	callback = function()
+		vim.bo.shiftwidth = 4
+		vim.bo.tabstop = 4
+		vim.bo.softtabstop = 4
+	end,
+})
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
 	callback = function()
