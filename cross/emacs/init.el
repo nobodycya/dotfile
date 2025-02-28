@@ -99,8 +99,7 @@
   (inhibit-startup-screen t)
   (inhibit-startup-message t)
   (inhibit-default-init t)
-  (initial-scratch-message
-   (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n")))
+  (initial-scratch-message (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n")))
 
 (use-package cus-edit
 	:ensure nil
@@ -109,11 +108,11 @@
 
 (use-package which-key
 	:ensure nil
-	:defer 5
+  :hook
+  (after-init . which-key-mode)
 	:config
   (setq which-key-idle-delay 0.3)
-  (setq which-key-show-docstrings t)
-	(which-key-mode))
+  (setq which-key-show-docstrings t))
 
 (use-package simple
   :ensure nil
@@ -275,6 +274,47 @@
   :config
   (setq prettify-symbols-unprettify-at-point 'right-edge))
 
+(use-package flymake
+  :ensure nil
+  :hook (prog-mode . flymake-mode)
+  :bind
+  (("M-n" . flymake-goto-next-error)
+   ("M-p" . flymake-goto-prev-error)))
+
+(use-package doom-themes
+  :hook (after-init . (lambda () (load-theme 'doom-one t))))
+
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-minor-modes t)
+  (setq doom-modeline-height 25)
+  (setq doom-modeline-bar-width 5))
+
+(use-package minions
+  :hook (doom-modeline-mode . minions-mode))
+
+(use-package centaur-tabs
+  :hook (prog-mode . centaur-tabs-mode)
+  :bind
+  (("C-<prior>" . centaur-tabs-backward)
+   ("C-<next>" . centaur-tabs-forward))
+  :config
+  (setq centaur-tabs-set-bar 'over)
+  (setq centaur-tabs-style "bar")
+  (setq centaur-tabs-height 28)
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-icon-type 'nerd-icons))
+
+(use-package hide-mode-line
+  :hook
+  (eshell-mode . hide-mode-line-mode))
+
+(use-package solaire-mode
+  :defer 5
+  :config
+  (solaire-global-mode))
+
 (use-package evil
   :hook
   (prog-mode . evil-mode)
@@ -290,8 +330,12 @@
 
 (use-package evil-collection
   :defer 2
+  :after (evil)
   :config
   (evil-collection-init))
+
+(use-package evil-visualstar
+  :hook (evil-mode . global-evil-visualstar-mode))
 
 (use-package evil-escape
   :hook (evil-mode . evil-escape-mode)
@@ -302,6 +346,9 @@
 (use-package evil-matchit
   :hook (evil-mode . global-evil-matchit-mode))
 
+(use-package evil-surround
+  :hook (evil-mode . global-evil-surround-mode))
+
 (use-package evil-nerd-commenter
   :after (evil)
   :bind
@@ -310,8 +357,236 @@
   (:map evil-visual-state-map
         (("gc" . evilnc-comment-or-uncomment-lines))))
 
+(use-package evil-goggles
+  :hook (evil-mode . evil-goggles-mode)
+  :config
+  (setq evil-goggles-pulse t)
+  (setq evil-goggles-duration 1.000))
+
+(use-package evil-args
+  :after (evil)
+  :bind
+  (:map evil-normal-state-map
+        ("L" . evil-forward-arg)
+        ("H" . evil-backward-arg)))
+
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package indent-bars
+  :hook ((prog-mode yaml-mode) . indent-bars-mode)
+  :config
+  (setq indent-bars-color '(highlight :face-bg t :blend 0.225))
+  (setq indent-bars-no-descend-string t)
+  (setq indent-bars-prefer-character t))
+
+(use-package colorful-mode
+  :hook (prog-mode . global-colorful-mode))
+
+(use-package hl-todo
+  :hook (prog-mode . hl-todo-mode)
+  :config
+  (setq hl-todo-highlight-punctuation ":")
+  (setq hl-todo-keyword-faces
+        '(("TODO" warning bold)
+          ("FIXME" error bold)
+          ("REVIEW" font-lock-keyword-face bold)
+          ("HACK" font-lock-constant-face bold)
+          ("DEPRECATED" font-lock-doc-face bold)
+          ("NOTE" success bold)
+          ("BUG" error bold)
+          ("XXX" font-lock-constant-face bold))))
+
+(use-package diredfl
+  :hook (dired-mode . diredfl-mode))
+
+(use-package nerd-icons-dired
+  :hook (dired-mode . nerd-icons-dired-mode))
+
+(use-package nerd-icons-ibuffer
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
+(use-package corfu
+  :hook
+  (prog-mode . global-corfu-mode)
+  (global-corfu-mode . corfu-popupinfo-mode)
+  :config
+  (setq corfu-auto t)
+  (setq corfu-auto-prefix 1)
+  (setq corfu-preview-current nil)
+  (setq corfu-auto-delay 0.1)
+  (setq corfu-popupinfo-delay '(0.4 . 0.2)))
+
+(use-package corfu-terminal
+  :hook (global-corfu-mode . corfu-terminal-mode))
+
+(use-package nerd-icons-corfu
+  :after (corfu)
+  :init (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev))
+
+(use-package vertico
+  :hook (after-init . vertico-mode)
+  :bind
+  (:map vertico-map
+        ("RET" . vertico-directory-enter)
+        ("DEL" . vertico-directory-delete-char)
+        ("M-DEL" . vertico-directory-delete-word))
+  :config
+  (setq vertico-count 12)
+  (setq vertico-scroll-margin 0)
+  (setq vertico-resize nil)
+  (setq vertico-cycle t))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
+
+(use-package marginalia
+  :hook (vertico-mode . marginalia-mode))
+
+(use-package embark
+  :bind
+  (("s-." . embark-act)
+   ("C-s-." . embark-act)
+   ("M-." . embark-dwim)
+   ([remap describe-bindings] . embark-bindings)))
+
+(use-package embark-consult
+  :bind (:map minibuffer-mode-map
+              ("C-c C-o" . embark-export))
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package consult
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :bind
+  (("C-c C-b" . consult-buffer)
+   ("C-c C-w" . consult-ripgrep)
+   ("C-c C-f" . consult-flymake)
+   ("C-c C-o" . consult-outline)
+   ("C-s" . consult-line)))
+
+(use-package ace-window
+  :bind (("C-x o" . ace-window))
+  :config
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
+(use-package winum
+  :defer 2
+  :config
+  (winum-mode))
+
+(use-package yasnippet
+  :hook (prog-mode . yas-global-mode))
+
+(use-package yasnippet-snippets)
+
+(use-package yasnippet-capf
+  :init
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+
+(use-package avy
+  :bind
+  (("M-g w" . avy-goto-word-0)
+   ("M-g l" . avy-goto-line)
+   ("M-g t" . avy-goto-char-timer)))
+
+(use-package git-gutter
+  :hook (prog-mode . global-git-gutter-mode))
+
+(use-package dired-sidebar
+  :bind
+  (("<f1>" . dired-toggle-toggle-sidebar)))
+
+(use-package lua-mode
+  :config
+  (setq lua-indent-level 2)
+  (setq lua-indent-nested-block-content-align nil)
+  (setq lua-indent-close-paren-align nil))
+
+(use-package cmake-mode)
+(use-package csv-mode)
+(use-package toml-mode)
+(use-package yaml-mode)
+(use-package json-mode)
+(use-package markdown-mode)
+
+(use-package gcmh
+  :hook (after-init . gcmh-mode))
+
+(use-package xclip
+  :hook (after-init . xclip-mode))
+
+(use-package elisp-def
+  :hook (emacs-lisp-mode . elisp-def-mode))
+
+(use-package highlight-numbers
+  :hook (prog-mode . highlight-numbers-mode))
+
+(use-package highlight-defined
+  :hook (emacs-lisp-mode . highlight-defined-mode))
+
+(use-package auto-highlight-symbol
+  :hook (prog-mode . global-auto-highlight-symbol-mode)
+  :config
+  (setq ahs-idle-interval 0.5))
+
+(use-package symbol-overlay
+  :bind
+  (("M-i" . symbol-overlay-put)
+   ("M-g M-n" . symbol-overlay-switch-forward)
+   ("M-g M-p" . symbol-overlay-switch-backward)
+   ("M-g M-r" . symbol-overlay-remove-all)))
+
+(use-package beacon
+  :defer 5
+  :config
+  (setq beacon-size 60)
+  (setq beacon-color 0.4)
+  (setq beacon-blink-duration 2.5)
+  (setq beacon-blink-delay 1.0)
+  (setq beacon-blink-when-window-scrolls t)
+  (setq beacon-blink-when-window-changes t)
+  (setq beacon-blink-when-point-moves-horizontally 3)
+  (setq beacon-blink-when-point-moves-vertically 3)
+  (beacon-mode))
+
+(use-package helpful
+  :bind
+  (([remap describe-key] . helpful-key)
+   ([remap describe-function] . helpful-callable)
+   ([remap describe-variable] . helpful-variable)
+   ([remap describe-command] . helpful-command)
+   ("C-c C-d" . helpful-at-point)))
+
+(use-package mode-line-bell
+  :defer 5
+  :config
+  (mode-line-bell-mode))
+
+(use-package magit
+  :commands (magit))
+
+(use-package olivetti
+  :commands (olivetti-mode))
+
+(use-package vundo
+  :commands (vundo))
+
+(use-package quickrun
+  :commands (quickrun))
+
+(use-package dape
+  :bind (("<f5>" . dape)))
 
 (provide 'init)
 ;;; Local Variables:
