@@ -62,7 +62,6 @@ set background=dark
 set timeoutlen=200
 set pumheight=12
 set pumwidth=20
-let g:vim_indent_cont = &sw
 
 " KEYBINDINGS:
 let mapleader = '\'
@@ -100,11 +99,11 @@ let g:loaded_zipPlugin = 1
 
 " AUTOCMD:
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$')
-  \| exe "normal! g'\""
-  \| endif
+      \| exe "normal! g'\""
+      \| endif
 autocmd BufWinEnter * if getfsize(expand('%')) > 1048576
-  \| syntax clear
-  \| endif
+      \| syntax clear
+      \| endif
 autocmd BufReadPost * setlocal formatoptions-=r formatoptions-=c formatoptions-=o
 autocmd FileType c,cpp setlocal commentstring=//\ %s
 autocmd FileType python,json,jsonc setlocal shiftwidth=4 tabstop=4 softtabstop=4
@@ -115,12 +114,12 @@ autocmd FileType * syntax sync minlines=200
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd BufWinEnter * PlugInstall --sync
-    \| source $MYVIMRC
+        \| source $MYVIMRC
 endif
 autocmd BufWinEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) > 0
-  \| PlugInstall --sync
-  \| source $MYVIMRC
-  \| endif
+      \| PlugInstall --sync
+      \| source $MYVIMRC
+      \| endif
 
 " INSTALL PLUGINS:
 call plug#begin()
@@ -188,116 +187,116 @@ call plug#end()
 augroup LoadVimPolyglot
   autocmd!
   autocmd InsertEnter * call plug#load('vim-polyglot')
-    \| autocmd! LoadVimPolyglot
+        \| autocmd! LoadVimPolyglot
 augroup END
 
 " UI: GRUVBOX
 augroup LoadGruvbox
   autocmd!
   autocmd BufReadPost,BufEnter * call plug#load('gruvbox')
-    \| autocmd! LoadGruvbox
-    \| colorscheme gruvbox
+        \| autocmd! LoadGruvbox
+        \| colorscheme gruvbox
 augroup END
 
 " UI: VIM-AIRLINE
 augroup LoadVimAirline
   autocmd!
   autocmd BufReadPost * call plug#load('vim-airline')
-    \| autocmd! LoadVimAirline
-    \| let g:airline_extensions = ['branch', 'tabline']
-    \| let g:airline_left_sep = ''
-    \| let g:airline_right_sep = ''
+        \| autocmd! LoadVimAirline
+        \| let g:airline_extensions = ['branch', 'tabline']
+        \| let g:airline_left_sep = ''
+        \| let g:airline_right_sep = ''
 augroup END
 
 " UI: VIM-BETTER-WHITESPACE
 augroup LoadVimBetterWhiteSpace
   autocmd!
   autocmd BufReadPost * call plug#load('vim-better-whitespace')
-    \| autocmd! LoadVimBetterWhiteSpace
+        \| autocmd! LoadVimBetterWhiteSpace
 augroup END
 
 " UI: VIM-HIGHLIGHTEDYANK
 augroup LoadVimHighlightYank
   autocmd!
   autocmd BufReadPost * call plug#load('vim-highlightedyank')
-    \| autocmd! LoadVimHighlightYank
-    \| let g:highlightedyank_highlight_duration = 1000
+        \| autocmd! LoadVimHighlightYank
+        \| let g:highlightedyank_highlight_duration = 1000
 augroup END
 
 " UI: VIM-DEVICONS
 augroup LoadVimDevIcons
   autocmd!
   autocmd BufReadPost * call plug#load('vim-devicons')
-    \| autocmd! LoadVimDevIcons
+        \| autocmd! LoadVimDevIcons
 augroup END
 
 " UI: TERMINUS
 augroup LoadTerminus
   autocmd!
   autocmd InsertEnter * call plug#load('terminus')
-    \| autocmd! LoadTerminus
+        \| autocmd! LoadTerminus
 augroup END
 
 " EDITOR: AUTO-PAIRS
 augroup LoadAutoPairs
   autocmd!
   autocmd InsertEnter * call plug#load('auto-pairs')
-    \| autocmd! LoadAutoPairs
-    \| call autopairs#AutoPairsTryInit()
+        \| autocmd! LoadAutoPairs
+        \| call autopairs#AutoPairsTryInit()
 augroup END
 
 " EDITOR: RAINBOW
 augroup LoadRainbow
   autocmd!
   autocmd InsertEnter * call plug#load('rainbow')
-    \| autocmd! LoadRainbow
-    \| let g:rainbow_active = 1
-    \| call rainbow_main#toggle()
+        \| autocmd! LoadRainbow
+        \| let g:rainbow_active = 1
+        \| call rainbow_main#toggle()
 augroup END
 
 " EDITOR: VIM-COMMENTARY
 augroup LoadVimCommentary
   autocmd!
   autocmd BufReadPost * call plug#load('vim-commentary')
-    \| autocmd! LoadVimCommentary
+        \| autocmd! LoadVimCommentary
 augroup END
 
 " EDITOR: INDENTLINE
 augroup LoadIndentLine
   autocmd!
   autocmd BufReadPost * call plug#load('indentLine')
-    \| autocmd! LoadIndentLine
-    \| let g:indentLine_char_list = ['│']
+        \| autocmd! LoadIndentLine
+        \| let g:indentLine_char_list = ['│']
 augroup END
 
 " EDITOR: CONTEXT.VIM
 augroup LoadContextVim
   autocmd!
   autocmd BufReadPost * call plug#load('context.vim')
-    \| autocmd! LoadContextVim
-    \| let g:context_max_height = 1
+        \| autocmd! LoadContextVim
+        \| let g:context_max_height = 1
 augroup END
 
 " EDITOR: VIM-GITGUTTER
 augroup LoadVimGitGutter
   autocmd!
   autocmd BufReadPost * call plug#load('vim-gitgutter')
-    \| autocmd! LoadVimGitGutter
-    \| call gitgutter#enable()
+        \| autocmd! LoadVimGitGutter
+        \| call gitgutter#enable()
 augroup END
 
 " EDITOR: VIM-CSS-COLOR
 augroup LoadVimCSSColor
   autocmd!
   autocmd BufReadPost * call plug#load('vim-css-color')
-    \| autocmd! LoadVimCSSColor
+        \| autocmd! LoadVimCSSColor
 augroup END
 
 " EDITOR: VIM-MATCHUP
 augroup LoadVimMatchup
   autocmd!
   autocmd BufReadPost * call plug#load('vim-matchup')
-    \| autocmd! LoadVimMatchup
+        \| autocmd! LoadVimMatchup
 augroup END
 
 " EDITOR: VIM-WHICH-KEY
@@ -308,14 +307,14 @@ nnoremap <silent><localleader> :<C-u>WhichKey '<Space>'<cr>
 augroup LoadVimVisualMulti
   autocmd!
   autocmd BufReadPost * call plug#load('vim-visual-multi')
-    \| let g:VM_default_mappings = 1
+        \| let g:VM_default_mappings = 1
 augroup END
 
 " LINTING: ALE
 augroup LoadALE
   autocmd!
   autocmd BufReadPost * call plug#load('ale')
-    \| autocmd! LoadALE
+        \| autocmd! LoadALE
 augroup END
 
 " COMPLETION: ASYNCOMPLETE.VIM
@@ -333,69 +332,69 @@ smap <expr><S-Tab> vsnip#available(1) ? '<Plug>(vsnip-jump-prev)' : pumvisible()
 augroup LoadCompletionLspSnippet
   autocmd!
   autocmd InsertEnter * call plug#load('asyncomplete.vim', 'asyncomplete-buffer.vim',
-    \ 'asyncomplete-file.vim', 'asyncomplete-lsp.vim', 'vim-lsp', 'vim-vsnip',
-    \ 'vim-vsnip-integ')
-    \| autocmd! LoadCompletionLspSnippet
-    \| let g:lsp_diagnostics_enabled = 0
-    \| call asyncomplete#enable_for_buffer()
-    \| call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'buffer',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': ['go'],
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ 'config': { 'max_buffer_size': 10000 }
-    \ }))
-    \| call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'allowlist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
-    \| call lsp#enable()
-    \| if executable('clangd')
-    \| call lsp#register_server({
-    \ 'name': 'clangd',
-    \ 'cmd': { server_info -> ['clangd', '-j=12', '--enable-config', '--background-index', '--clang-tidy', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion-decorators', '--limit-references=3000', '--limit-results=350'] },
-    \ 'whitelist': ['c', 'cpp']
-    \ })
-    \| endif
-    \| if executable('pylsp')
-    \| call lsp#register_server({
-    \ 'name': 'pylsp',
-    \ 'cmd': { server_info -> ['pylsp'] },
-    \ 'whitelist': ['python']
-    \ })
-    \| endif
-    \| if executable('typescript-language-server')
-    \| call lsp#register_server({
-    \ 'name': 'typescript-language-server',
-    \ 'cmd': { server_info -> [&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-    \ 'root_uri': { server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..')) },
-    \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact']
-    \ })
-    \| endif
-    \| if executable('lua-language-server')
-    \| call lsp#register_server({
-    \ 'name': 'lua-language-server',
-    \ 'cmd': { server_info -> ['lua-language-server'] },
-    \ 'whitelist': ['lua']
-    \ })
-    \| endif
-    \| if executable('gopls')
-    \| call lsp#register_server({
-    \ 'name': 'gopls',
-    \ 'cmd': { server_info -> ['gopls', '-remote=auto'] },
-    \ 'whitelist': ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']
-    \ })
-    \| endif
-    \| if executable('vim-language-server')
-    \| call lsp#register_server({
-    \ 'name': 'vim-language-server',
-    \ 'cmd': { server_info -> ['vim-language-server', '--stdio'] },
-    \ 'whitelist': ['vim'],
-    \ 'initialization_options': { 'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp }
-    \ })
-    \| endif
+        \ 'asyncomplete-file.vim', 'asyncomplete-lsp.vim', 'vim-lsp', 'vim-vsnip',
+        \ 'vim-vsnip-integ')
+        \| autocmd! LoadCompletionLspSnippet
+        \| let g:lsp_diagnostics_enabled = 0
+        \| call asyncomplete#enable_for_buffer()
+        \| call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+        \ 'name': 'buffer',
+        \ 'allowlist': ['*'],
+        \ 'blocklist': ['go'],
+        \ 'completor': function('asyncomplete#sources#buffer#completor'),
+        \ 'config': { 'max_buffer_size': 10000 }
+        \ }))
+        \| call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+        \ 'name': 'file',
+        \ 'allowlist': ['*'],
+        \ 'priority': 10,
+        \ 'completor': function('asyncomplete#sources#file#completor')
+        \ }))
+        \| call lsp#enable()
+        \| if executable('clangd')
+        \| call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': { server_info -> ['clangd', '-j=12', '--enable-config', '--background-index', '--clang-tidy', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion-decorators', '--limit-references=3000', '--limit-results=350'] },
+        \ 'whitelist': ['c', 'cpp']
+        \ })
+        \| endif
+        \| if executable('pylsp')
+        \| call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': { server_info -> ['pylsp'] },
+        \ 'whitelist': ['python']
+        \ })
+        \| endif
+        \| if executable('typescript-language-server')
+        \| call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': { server_info -> [&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri': { server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..')) },
+        \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact']
+        \ })
+        \| endif
+        \| if executable('lua-language-server')
+        \| call lsp#register_server({
+        \ 'name': 'lua-language-server',
+        \ 'cmd': { server_info -> ['lua-language-server'] },
+        \ 'whitelist': ['lua']
+        \ })
+        \| endif
+        \| if executable('gopls')
+        \| call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': { server_info -> ['gopls', '-remote=auto'] },
+        \ 'whitelist': ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']
+        \ })
+        \| endif
+        \| if executable('vim-language-server')
+        \| call lsp#register_server({
+        \ 'name': 'vim-language-server',
+        \ 'cmd': { server_info -> ['vim-language-server', '--stdio'] },
+        \ 'whitelist': ['vim'],
+        \ 'initialization_options': { 'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp }
+        \ })
+        \| endif
 augroup END
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
@@ -459,7 +458,7 @@ map <leader>gw <Plug>(easymotion-bd-w)
 augroup LoadVimSneak
   autocmd!
   autocmd BufReadPost * call plug#load('vim-sneak')
-    \| autocmd! LoadVimSneak
+        \| autocmd! LoadVimSneak
 augroup END
 
 " TOOL: VIM-FLOATERM
