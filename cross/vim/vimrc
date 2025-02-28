@@ -143,6 +143,7 @@ Plug 'airblade/vim-gitgutter', { 'on': [] }
 Plug 'ap/vim-css-color', { 'on': [] }
 Plug 'andymass/vim-matchup', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'mg979/vim-visual-multi', { 'branch': 'master', 'on': [] }
 " LINTING
 Plug 'dense-analysis/ale', { 'on': [] }
 " COMPLETION
@@ -172,6 +173,7 @@ Plug 'justinmk/vim-sneak', { 'on': [] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'], 'on': ['MarkdownPreview'] }
 Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
 Plug 'dstein64/vim-startuptime', { 'on': ['StartupTime'] }
+Plug 'lambdalisue/vim-suda', { 'on': ['SudaRead', 'SudaWrite'] }
 " FORMATTING
 if has('python') || has('python3')
   Plug 'vim-autoformat/vim-autoformat', { 'on': ['Autoformat'] }
@@ -301,6 +303,13 @@ augroup END
 " EDITOR: VIM-WHICH-KEY
 nnoremap <silent><leader> :<C-u>WhichKey '\'<cr>
 nnoremap <silent><localleader> :<C-u>WhichKey '<Space>'<cr>
+
+" EDITOR: VIM-VISUAL-MULTI
+augroup LoadVimVisualMulti
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-visual-multi')
+    \| let g:VM_default_mappings = 1
+augroup END
 
 " LINTING: ALE
 augroup LoadALE
