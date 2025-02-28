@@ -1,12 +1,28 @@
-""" REFERENCE """
+" REFERENCE
 " https://github.com/junegunn/vim-plug/wiki/tips
 " https://github.com/skywind3000/vim-init
 " https://github.com/wklken/k-vim
 " https://github.com/amix/vimrc
 " https://gitee.com/mirrorvim/vim-fast/blob/master/vimrc-no-plug
 " https://github.com/chenxuan520/vim-fast
+" https://github.com/spf13/spf13-vim
 
-""" OPTION """
+" GUI
+if has('gui-running')
+  if has('unix')
+    set guifont=JetBrainsMono\ Nerd\ Font:h12
+  elseif has('win32') || has('win64')
+    set guifont=Consolas:h10
+  elseif has('mac')
+    set guifont=Menlo:h12
+  endif
+  set guioptions-=T
+  set guioptions-=m
+  set guioptions-=r
+  set listchars=tab:▸\ ,space:·
+endif
+
+" OPTIONS
 filetype on
 filetype plugin on
 filetype indent on
@@ -17,12 +33,11 @@ set backspace=indent,eol,start
 set ruler
 set number
 set relativenumber
-set nocursorline
-set nocursorcolumn
-set colorcolumn=0
+set cursorline
+set cursorcolumn
+set colorcolumn=80
 set splitbelow
 set splitright
-set mouse=
 set clipboard^=unnamed,unnamedplus
 set nowrap
 set showtabline=2
@@ -48,13 +63,8 @@ set timeoutlen=200
 set pumheight=12
 set pumwidth=20
 let g:vim_indent_cont = &sw
-if v:version >= 900
-  colorscheme habamax
-else
-  colorscheme desert
-endif
 
-""" KEYBINDING """
+" KEYBINDINGS
 let mapleader = '\'
 let maplocalleader = ' '
 nnoremap <leader>CE :edit $MYVIMRC<cr>
@@ -73,7 +83,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-""" BUILTIN PLUGIN """
+" BUILTIN PLUGINS
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
 let g:loaded_logiPat = 1
@@ -88,7 +98,7 @@ let g:loaded_tohtml = 1
 let g:loaded_vimballPlugin = 1
 let g:loaded_zipPlugin = 1
 
-""" AUTOCMD """
+" AUTOCMD
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$')
   \| exe "normal! g'\""
   \| endif
@@ -96,12 +106,12 @@ autocmd BufWinEnter * if getfsize(expand('%')) > 1048576
   \| syntax clear
   \| endif
 autocmd BufReadPost * setlocal formatoptions-=r formatoptions-=c formatoptions-=o
-autocmd FileType python,json setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType help noremap <buffer>q :bd<cr>
 autocmd FileType c,cpp setlocal commentstring=//\ %s
+autocmd FileType python,json,jsonc setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType help noremap <Buffer>q :bd<cr>
 autocmd FileType * syntax sync minlines=200
 
-""" VIM-PLUG """
+" VIM-PLUG
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd BufWinEnter * PlugInstall --sync
@@ -112,108 +122,211 @@ autocmd BufWinEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| source $MYVIMRC
   \| endif
 
-""" INSTALL PLUGINS """
+" INSTALL PLUGINS
 call plug#begin()
+" SYNTAX
 Plug 'sheerun/vim-polyglot', { 'on': [] }
-Plug 'itchyny/lightline.vim', { 'on': [] }
+" UI
+Plug 'morhetz/gruvbox', { 'on': [] }
+Plug 'vim-airline/vim-airline', { 'on': [] }
+Plug 'ntpeters/vim-better-whitespace', { 'on': [] }
+Plug 'machakann/vim-highlightedyank', { 'on': [] }
+Plug 'ryanoasis/vim-devicons', { 'on': [] }
+Plug 'wincent/terminus', { 'on': [] }
+" EDITOR
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
 Plug 'tpope/vim-commentary', { 'on': [] }
-Plug 'dense-analysis/ale', { 'on': [] }
+Plug 'Yggdroot/indentLine', { 'on': [] }
+Plug 'wellle/context.vim', { 'on': [] }
+Plug 'airblade/vim-gitgutter', { 'on': [] }
+Plug 'ap/vim-css-color', { 'on': [] }
+Plug 'andymass/vim-matchup', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-Plug 'thinca/vim-quickrun', { 'on': ['QuickRun'] }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Buffers', 'Colors', 'Lines', 'BLines', 'History', 'Commands', 'Rg'] }
+" LINTING
+Plug 'dense-analysis/ale', { 'on': [] }
+" COMPLETION
 Plug 'prabirshrestha/asyncomplete.vim', { 'on': [] }
 Plug 'prabirshrestha/asyncomplete-buffer.vim', { 'on': [] }
 Plug 'prabirshrestha/asyncomplete-file.vim', { 'on': [] }
 Plug 'prabirshrestha/asyncomplete-lsp.vim', { 'on': [] }
+" LSP
 Plug 'prabirshrestha/vim-lsp', { 'on': [] }
 Plug 'mattn/vim-lsp-settings', { 'on': ['LspInstallServer', 'LspManageServers'] }
+" SNIPPET
 Plug 'hrsh7th/vim-vsnip', { 'on': [] }
 Plug 'hrsh7th/vim-vsnip-integ', { 'on': [] }
+" TOOL
+Plug 'thinca/vim-quickrun', { 'on': ['QuickRun'] }
+Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle'] }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle'] }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Buffers', 'Colors', 'Lines', 'BLines', 'History', 'Commands', 'Rg'] }
+Plug 'liuchengxu/vista.vim', { 'on': ['Vista', 'Vista!', 'Vista!!'] }
+Plug 'mbbill/undotree', { 'on': ['UndotreeToggle'] }
+Plug 'junegunn/limelight.vim', { 'on': ['Limelight'] }
+Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
+Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
+Plug 'easymotion/vim-easymotion', { 'on': ['<Plug>(easymotion-bd-jk)', '<Plug>(easymotion-bd-w)', '<Plug>(easymotion-overwin-f2)'] }
+Plug 'justinmk/vim-sneak', { 'on': [] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'], 'on': ['MarkdownPreview'] }
+Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
+Plug 'dstein64/vim-startuptime', { 'on': ['StartupTime'] }
+" FORMATTING
+if has('python') || has('python3')
+  Plug 'vim-autoformat/vim-autoformat', { 'on': ['Autoformat'] }
+endif
+" DAP
+if has('python') || has('python3')
+  Plug 'puremourning/vimspector', { 'on': ['VimspectorInstall', 'VimspectorUpdate', '<Plug>VimspectorToggleBreakpoint'] }
+endif
 call plug#end()
 
-" VIM-POLYGLOT
-augroup LOAD_VIM_POLYGLOT
+" SYNTAX: VIM-POLYGLOT
+augroup LoadVimPolyglot
   autocmd!
   autocmd InsertEnter * call plug#load('vim-polyglot')
-    \| autocmd! LOAD_VIM_POLYGLOT
+    \| autocmd! LoadVimPolyglot
 augroup END
 
-" LIGHTLINE.VIM
-augroup LOAD_LIGHTLINE_VIM
+" UI: GRUVBOX
+augroup LoadGruvbox
   autocmd!
-  autocmd BufReadPost * call plug#load('lightline.vim')
-    \| autocmd! LOAD_LIGHTLINE_VIM
+  autocmd BufReadPost,BufEnter * call plug#load('gruvbox')
+    \| autocmd! LoadGruvbox
+    \| colorscheme gruvbox
 augroup END
 
-" AUTO-PAIRS
-augroup LOAD_AUTO_PAIRS
+" UI: VIM-AIRLINE
+augroup LoadVimAirline
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-airline')
+    \| autocmd! LoadVimAirline
+    \| let g:airline_extensions = ['branch', 'tabline']
+    \| let g:airline_left_sep = ''
+    \| let g:airline_right_sep = ''
+augroup END
+
+" UI: VIM-BETTER-WHITESPACE
+augroup LoadVimBetterWhiteSpace
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-better-whitespace')
+    \| autocmd! LoadVimBetterWhiteSpace
+augroup END
+
+" UI: VIM-HIGHLIGHTEDYANK
+augroup LoadVimHighlightYank
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-highlightedyank')
+    \| autocmd! LoadVimHighlightYank
+    \| let g:highlightedyank_highlight_duration = 1000
+augroup END
+
+" UI: VIM-DEVICONS
+augroup LoadVimDevIcons
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-devicons')
+    \| autocmd! LoadVimDevIcons
+augroup END
+
+" UI: TERMINUS
+augroup LoadTerminus
+  autocmd!
+  autocmd InsertEnter * call plug#load('terminus')
+    \| autocmd! LoadTerminus
+augroup END
+
+" EDITOR: AUTO-PAIRS
+augroup LoadAutoPairs
   autocmd!
   autocmd InsertEnter * call plug#load('auto-pairs')
-    \| autocmd! LOAD_AUTO_PAIRS
+    \| autocmd! LoadAutoPairs
     \| call autopairs#AutoPairsTryInit()
 augroup END
 
-" RAINBOW
-augroup LOAD_RAINBOW
+" EDITOR: RAINBOW
+augroup LoadRainbow
   autocmd!
   autocmd InsertEnter * call plug#load('rainbow')
-    \| autocmd! LOAD_RAINBOW
+    \| autocmd! LoadRainbow
     \| let g:rainbow_active = 1
     \| call rainbow_main#toggle()
 augroup END
 
-" VIM-COMMENTARY
-augroup LOAD_VIM_COMMENTARY
+" EDITOR: VIM-COMMENTARY
+augroup LoadVimCommentary
   autocmd!
   autocmd BufReadPost * call plug#load('vim-commentary')
-    \| autocmd! LOAD_VIM_COMMENTARY
+    \| autocmd! LoadVimCommentary
 augroup END
 
-" ALE
-augroup LOAD_ALE
+" EDITOR: INDENTLINE
+augroup LoadIndentLine
   autocmd!
-  autocmd BufReadPost * call plug#load('ale')
-    \| autocmd! LOAD_ALE
+  autocmd BufReadPost * call plug#load('indentLine')
+    \| autocmd! LoadIndentLine
+    \| let g:indentLine_char_list = ['│']
 augroup END
 
-" VIM-WHICH-KEY
+" EDITOR: CONTEXT.VIM
+augroup LoadContextVim
+  autocmd!
+  autocmd BufReadPost * call plug#load('context.vim')
+    \| autocmd! LoadContextVim
+    \| let g:context_max_height = 1
+augroup END
+
+" EDITOR: VIM-GITGUTTER
+augroup LoadVimGitGutter
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-gitgutter')
+    \| autocmd! LoadVimGitGutter
+    \| call gitgutter#enable()
+augroup END
+
+" EDITOR: VIM-CSS-COLOR
+augroup LoadVimCSSColor
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-css-color')
+    \| autocmd! LoadVimCSSColor
+augroup END
+
+" EDITOR: VIM-MATCHUP
+augroup LoadVimMatchup
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-matchup')
+    \| autocmd! LoadVimMatchup
+augroup END
+
+" EDITOR: VIM-WHICH-KEY
 nnoremap <silent><leader> :<C-u>WhichKey '\'<cr>
 nnoremap <silent><localleader> :<C-u>WhichKey '<Space>'<cr>
 
-" QUICKRUN
-nnoremap <leader>RR :QuickRun<cr>
+" LINTING: ALE
+augroup LoadALE
+  autocmd!
+  autocmd BufReadPost * call plug#load('ale')
+    \| autocmd! LoadALE
+augroup END
 
-" FZF & FZF.VIM
-let g:fzf_layout={ 'down': '40%' }
-nnoremap <leader>ff :Files<cr>
-nnoremap <leader>fF :Files ~/<cr>
-nnoremap <leader>fb :Buffers<cr>
-nnoremap <leader>fw :Rg<cr>
-nnoremap <leader>fs :BLines<cr>
-nnoremap <leader>fr :History<cr>
-nnoremap <leader>fc :Colors<cr>
-nnoremap <leader><leader> :Commands<cr>
-
-" ASYNCOMPLETE.VIM
-" ASYNCOMPLETE-BUFFER.VIM
-" ASYNCOMPLETE-FILE.VIM
-" ASYNCOMPLETE-LSP.VIM
-" VIM-LSP
-" VIM-VSNIP
-" VIM-VSNIP-INTEG
+" COMPLETION: ASYNCOMPLETE.VIM
+" COMPLETION: ASYNCOMPLETE-BUFFER.VIM
+" COMPLETION: ASYNCOMPLETE-FILE.VIM
+" COMPLETION: ASYNCOMPLETE-LSP.VIM
+" LSP: VIM-LSP
+" LSP: VIM-LSP-SETTINGS
+" SNIPPET: VIM-VSNIP
+" SNIPPET: VIM-VSNIP-INTEG
 imap <expr><Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : pumvisible() ? "\<C-n>" : "\<Tab>"
 smap <expr><Tab> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : pumvisible() ? "\<C-n>" : "\<Tab>"
 imap <expr><S-Tab> vsnip#available(1) ? '<Plug>(vsnip-jump-prev)' : pumvisible() ? "\<C-p>" : "\<S-Tab>"
 smap <expr><S-Tab> vsnip#available(1) ? '<Plug>(vsnip-jump-prev)' : pumvisible() ? "\<C-p>" : "\<S-Tab>"
-augroup LOAD_ASYNCOMPLETE_LSP_SNIPPET
+augroup LoadCompletionLspSnippet
   autocmd!
   autocmd InsertEnter * call plug#load('asyncomplete.vim', 'asyncomplete-buffer.vim',
     \ 'asyncomplete-file.vim', 'asyncomplete-lsp.vim', 'vim-lsp', 'vim-vsnip',
     \ 'vim-vsnip-integ')
-    \| autocmd! LOAD_ASYNCOMPLETE_LSP_SNIPPET
+    \| autocmd! LoadCompletionLspSnippet
     \| let g:lsp_diagnostics_enabled = 0
     \| call asyncomplete#enable_for_buffer()
     \| call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
@@ -221,7 +334,7 @@ augroup LOAD_ASYNCOMPLETE_LSP_SNIPPET
     \ 'allowlist': ['*'],
     \ 'blocklist': ['go'],
     \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ 'config': { 'max_buffer_size': 100000 }
+    \ 'config': { 'max_buffer_size': 10000 }
     \ }))
     \| call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
     \ 'name': 'file',
@@ -252,14 +365,6 @@ augroup LOAD_ASYNCOMPLETE_LSP_SNIPPET
     \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact']
     \ })
     \| endif
-    \| if executable('vim-language-server')
-    \| call lsp#register_server({
-    \ 'name': 'vim-language-server',
-    \ 'cmd': { server_info -> ['vim-language-server', '--stdio'] },
-    \ 'whitelist': ['vim'],
-    \ 'initialization_options': { 'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp }
-    \ })
-    \| endif
     \| if executable('lua-language-server')
     \| call lsp#register_server({
     \ 'name': 'lua-language-server',
@@ -274,6 +379,14 @@ augroup LOAD_ASYNCOMPLETE_LSP_SNIPPET
     \ 'whitelist': ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']
     \ })
     \| endif
+    \| if executable('vim-language-server')
+    \| call lsp#register_server({
+    \ 'name': 'vim-language-server',
+    \ 'cmd': { server_info -> ['vim-language-server', '--stdio'] },
+    \ 'whitelist': ['vim'],
+    \ 'initialization_options': { 'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp }
+    \ })
+    \| endif
 augroup END
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
@@ -281,17 +394,73 @@ function! s:on_lsp_buffer_enabled() abort
   if exists('+tagfunc')
     setlocal tagfunc=lsp#tagfunc
   endif
-  nmap <buffer> gd <Plug>(lsp-definition)
-  nmap <buffer> gs <Plug>(lsp-document-symbol-search)
-  nmap <buffer> gr <Plug>(lsp-references)
-  nmap <buffer> gi <Plug>(lsp-implementation)
-  nmap <buffer> K <plug>(lsp-hover)
-  nnoremap <buffer> <expr><C-f> lsp#scroll(+4)
-  nnoremap <buffer> <expr><C-b> lsp#scroll(-4)
+  nmap <Buffer> gd <Plug>(lsp-definition)
+  nmap <Buffer> gs <Plug>(lsp-document-symbol-search)
+  nmap <Buffer> gr <Plug>(lsp-references)
+  nmap <Buffer> gi <Plug>(lsp-implementation)
+  nmap <Buffer> K <plug>(lsp-hover)
+  nnoremap <Buffer> <expr><C-f> lsp#scroll(+4)
+  nnoremap <Buffer> <expr><C-b> lsp#scroll(-4)
   let g:lsp_format_sync_timeout = 1000
-  autocmd! bufwritepre *.rs,*.go call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
-augroup lsp_install
+augroup LspInstall
   autocmd!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" TOOL: QUICKRUN
+nnoremap <leader>RR :QuickRun<cr>
+
+" TOOL: NERDTREE
+" TOOL: NERDTREE-GIT-PLUGIN
+let g:NERDTreeWinSize = 23
+let g:NERDTreeShowHidden = 1
+nnoremap <leader>tn :NERDTreeToggle<cr>
+
+" TOOL: FZF
+" TOOL: FZF.VIM
+let g:fzf_layout={ 'down': '40%' }
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fF :Files ~/<cr>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>fw :Rg<cr>
+nnoremap <leader>fs :BLines<cr>
+nnoremap <leader>fr :History<cr>
+nnoremap <leader>fc :Colors<cr>
+nnoremap <leader><leader> :Commands<cr>
+
+" TOOL: VISTA
+let g:vista_default_executive = 'vim_lsp'
+nnoremap <leader>tv :Vista!!<cr>
+
+" TOOL: UNDOTREE
+nnoremap <leader>tu :UndotreeToggle<cr>
+
+" TOOL: LIMELIGHT
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_default_coefficient = 0.7
+
+" TOOL: EASYMOTION
+let g:EasyMotion_do_mapping = 0
+map <leader>gl <Plug>(easymotion-bd-jk)
+map <leader>gw <Plug>(easymotion-bd-w)
+
+" TOOL: VIM-SNEAK
+augroup LoadVimSneak
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-sneak')
+    \| autocmd! LoadVimSneak
+augroup END
+
+" TOOL: VIM-FLOATERM
+let g:floaterm_wintype = 'split'
+let g:floaterm_height = 0.4
+nnoremap <silent> <F4> :FloatermNew<cr>
+tnoremap <silent> <F4> <C-\><C-n>:FloatermNew<cr>
+nnoremap <silent> <F1> :FloatermPrev<cr>
+tnoremap <silent> <F1> <C-\><C-n>:FloatermPrev<cr>
+nnoremap <silent> <F3> :FloatermNext<cr>
+tnoremap <silent> <F3> <C-\><C-n>:FloatermNext<cr>
+nnoremap <silent> <F2> :FloatermToggle<cr>
+tnoremap <silent> <F2> <C-\><C-n>:FloatermToggle<cr>
