@@ -588,6 +588,39 @@
 (use-package dape
   :bind (("<f5>" . dape)))
 
+(use-package general
+  :defer 5
+  :config
+  (general-create-definer spc-leader-def
+    :prefix "SPC"
+    :states '(normal visual))
+  (spc-leader-def
+    "SPC" 'execute-extended-command
+    "1" 'winum-select-window-1
+    "2" 'winum-select-window-2
+    "3" 'winum-select-window-3
+    "4" 'winum-select-window-4
+    "5" 'winum-select-window-5
+    "6" 'winum-select-window-6
+    "7" 'winum-select-window-7
+    "8" 'winum-select-window-8
+    "9" 'winum-select-window-9
+    "0" 'winum-select-window-0-or-10
+    "ff" 'consult-find
+    "fb" 'consult-buffer
+    "fo" 'consult-outline
+    "fw" 'consult-ripgrep
+    "fc" 'consult-theme
+    "ww" 'ace-window
+    "gl" 'avy-goto-line
+    "gw" 'avy-goto-word-0
+    "gc" 'avy-goto-char-timer))
+
+(use-package esup
+  :commands (esup)
+  :config
+  (setq esup-depth 0))
+
 (provide 'init)
 ;;; Local Variables:
 ;;; no-byte-compile: t
