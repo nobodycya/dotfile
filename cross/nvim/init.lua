@@ -33,14 +33,12 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.writebackup = false
 vim.opt.undofile = false
-vim.opt.list = true
-vim.opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
 vim.opt.background = "dark"
 vim.cmd.colorscheme("habamax")
 
 --- KEYBINDING ---
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = " "
 vim.api.nvim_set_keymap("n", "<leader>CR", "<cmd>source $MYVIMRC<cr>", { desc = "Config: Reload" })
 vim.api.nvim_set_keymap("n", "<leader>CE", "<cmd>edit $MYVIMRC<cr>", { desc = "Config: Edit" })
 vim.api.nvim_set_keymap("i", "jk", "<esc>", { desc = "Back to Normal Mode" })
@@ -70,7 +68,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
 	callback = function()
-		(vim.hl or vim.highlight).on_yank({ higroup = "IncSearch", timeout = 2000 })
+		vim.highlight.on_yank({ timeout = 2000 })
 	end,
 })
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -231,36 +229,88 @@ require("lazy").setup({
 	spec = {
 		-- LazyVim --
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins",
 		-- },
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins.extras.lang.clangd",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.clangd",
 		-- },
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins.extras.lang.python",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.python",
 		-- },
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins.extras.lang.typescript",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.typescript",
 		-- },
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins.extras.lang.go",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.go",
 		-- },
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins.extras.lang.json",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.vue",
 		-- },
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins.extras.lang.toml",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.json",
 		-- },
 		-- {
-		--   "LazyVim/LazyVim",
-		--   import = "lazyvim.plugins.extras.lang.yaml",
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.toml",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lang.yaml",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.coding.nvim-cmp",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.coding.luasnip",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.dap.core",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.editor.aerial",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.editor.illuminate",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.editor.navic",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.editor.overseer",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.formatting.black",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.formatting.prettier",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.linting.eslint",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.lsp.none-ls",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.ui.treesitter-context",
 		-- },
 		-- AstroNvim --
 		{
@@ -290,6 +340,14 @@ require("lazy").setup({
 		},
 		{
 			"AstroNvim/astrocommunity",
+			import = "astrocommunity.pack.html-css",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.pack.vue",
+		},
+		{
+			"AstroNvim/astrocommunity",
 			import = "astrocommunity.pack.json",
 		},
 		{
@@ -299,6 +357,34 @@ require("lazy").setup({
 		{
 			"AstroNvim/astrocommunity",
 			import = "astrocommunity.pack.yaml",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.code-runner.overseer-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.completion.cmp-cmdline",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.completion.cmp-nvim-lua",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.editing-support.nvim-treesitter-context",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.editing-support.rainbow-delimiters-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.lsp.lsp-signature-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.utility.neodim",
 		},
 	},
 	local_spec = true,
