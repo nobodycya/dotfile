@@ -141,6 +141,9 @@ Plug 'wellle/context.vim', { 'on': [] }
 Plug 'airblade/vim-gitgutter', { 'on': [] }
 Plug 'ap/vim-css-color', { 'on': [] }
 Plug 'andymass/vim-matchup', { 'on': [] }
+Plug 'tpope/vim-surround', { 'on': [] }
+Plug 'romainl/vim-cool', { 'on': [] }
+Plug 'dominikduda/vim_current_word', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'mg979/vim-visual-multi', { 'branch': 'master', 'on': [] }
 " LINTING
@@ -173,6 +176,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
 Plug 'dstein64/vim-startuptime', { 'on': ['StartupTime'] }
 Plug 'lambdalisue/vim-suda', { 'on': ['SudaRead', 'SudaWrite'] }
+Plug 'tpope/vim-fugitive', { 'on': ['G'] }
 " FORMATTING
 if has('python') || has('python3')
   Plug 'vim-autoformat/vim-autoformat', { 'on': ['Autoformat'] }
@@ -297,6 +301,29 @@ augroup LoadVimMatchup
   autocmd!
   autocmd BufReadPost * call plug#load('vim-matchup')
         \| autocmd! LoadVimMatchup
+augroup END
+
+" EDITOR: VIM-SURROUND
+augroup LoadVimSurround
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-surround')
+        \| autocmd! LoadVimSurround
+augroup END
+
+" EDITOR: VIM-COOL
+augroup LoadVimCool
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-cool')
+        \| autocmd! LoadVimCool
+augroup END
+
+" EDITOR: VIM_CURRENT_WORD
+augroup LoadVimCurrentWord
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim_current_word')
+        \| autocmd! LoadVimCurrentWord
+        \| let g:vim_current_word#highlight_delay = 1
+        \| highlight CurrentWordTwins ctermbg=240 cterm=bold
 augroup END
 
 " EDITOR: VIM-WHICH-KEY
