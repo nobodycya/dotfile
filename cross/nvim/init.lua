@@ -9,9 +9,9 @@
 
 --- OPTION ---
 vim.opt.clipboard = "unnamedplus,unnamed"
-vim.opt.colorcolumn = "0"
-vim.opt.cursorcolumn = false
-vim.opt.cursorline = false
+vim.opt.colorcolumn = "80"
+vim.opt.cursorcolumn = true
+vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.splitbelow = true
