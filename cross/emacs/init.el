@@ -158,6 +158,14 @@
   :ensure nil
   :hook (after-init . global-auto-revert-mode))
 
+(use-package uniquify
+  :ensure nil
+  :config
+  (setq uniquify-buffer-name-style 'reverse)
+  (setq uniquify-separator " • ")
+  (setq uniquify-after-kill-buffer-p t)
+  (setq uniquify-ignore-buffers-re "^\\*"))
+
 (use-package display-fill-column-indicator
   :ensure nil
   :hook (prog-mode . display-fill-column-indicator-mode)
@@ -332,7 +340,19 @@
   :defer 2
   :after (evil)
   :config
-  (evil-collection-init))
+  (evil-collection-init '(consult
+                          corfu
+                          dape
+                          dired-sidebar
+                          dired eglot
+                          embark
+                          eshell
+                          ibuffer
+                          minibuffer
+                          quickrun
+                          vertico
+                          wgrep
+                          vundo)))
 
 (use-package evil-visualstar
   :hook (evil-mode . global-evil-visualstar-mode))
@@ -456,14 +476,13 @@
 
 (use-package embark
   :bind
-  (("s-." . embark-act)
-   ("C-s-." . embark-act)
-   ("M-." . embark-dwim)
-   ([remap describe-bindings] . embark-bindings)))
+  (("C-." . embark-act)
+   ("C-;" . embark-dwim)))
 
 (use-package embark-consult
-  :bind (:map minibuffer-mode-map
-              ("C-c C-o" . embark-export))
+  :bind
+  (:map minibuffer-mode-map
+        ("C-c C-o" . embark-export))
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package consult
@@ -471,9 +490,18 @@
   :bind
   (("C-c C-b" . consult-buffer)
    ("C-c C-w" . consult-ripgrep)
+   ("C-c C-g" . consult-grep)
    ("C-c C-f" . consult-flymake)
    ("C-c C-o" . consult-outline)
    ("C-s" . consult-line)))
+
+(use-package wgrep
+  :commands (wgrep)
+  :config
+  (setq wgrep-auto-save-buffer t))
+
+(use-package breadcrumb
+  :hook (prog-mode . breadcrumb-mode))
 
 (use-package ace-window
   :bind (("C-x o" . ace-window))
@@ -481,7 +509,7 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package winum
-  :defer 2
+  :defer 5
   :config
   (winum-mode))
 
@@ -513,6 +541,8 @@
   (setq lua-indent-nested-block-content-align nil)
   (setq lua-indent-close-paren-align nil))
 
+(use-package go-mode)
+(use-package typescript-mode)
 (use-package cmake-mode)
 (use-package csv-mode)
 (use-package toml-mode)
@@ -521,7 +551,9 @@
 (use-package markdown-mode)
 
 (use-package gcmh
-  :hook (after-init . gcmh-mode))
+  :hook (after-init . gcmh-mode)
+  :config
+  (setq gcmh-high-cons-threshold (* 128 1024 1024)))
 
 (use-package xclip
   :hook (after-init . xclip-mode))
@@ -531,6 +563,9 @@
 
 (use-package highlight-numbers
   :hook (prog-mode . highlight-numbers-mode))
+
+(use-package highlight-quoted
+  :hook (emacs-lisp-mode . highlight-quoted-mode))
 
 (use-package highlight-defined
   :hook (emacs-lisp-mode . highlight-defined-mode))
@@ -550,10 +585,10 @@
 (use-package beacon
   :defer 5
   :config
-  (setq beacon-size 60)
-  (setq beacon-color 0.4)
-  (setq beacon-blink-duration 2.5)
-  (setq beacon-blink-delay 1.0)
+  (setq beacon-size 30)
+  (setq beacon-color 0.6)
+  (setq beacon-blink-duration 0.5)
+  (setq beacon-blink-delay 0.5)
   (setq beacon-blink-when-window-scrolls t)
   (setq beacon-blink-when-window-changes t)
   (setq beacon-blink-when-point-moves-horizontally 3)
@@ -583,7 +618,9 @@
   :commands (vundo))
 
 (use-package quickrun
-  :commands (quickrun))
+  :commands (quickrun)
+  :config
+  (setq quickrun-focus-p nil))
 
 (use-package dape
   :bind (("<f5>" . dape)))
@@ -614,12 +651,19 @@
     "ww" 'ace-window
     "gl" 'avy-goto-line
     "gw" 'avy-goto-word-0
-    "gc" 'avy-goto-char-timer))
+    "gc" 'avy-goto-char-timer
+    "RR" 'quickrun))
 
 (use-package esup
   :commands (esup)
   :config
   (setq esup-depth 0))
+
+(use-package exec-path-from-shell
+  :when (memq window-system '(mac ns x))
+  :defer 10
+  :config
+  (exec-path-from-shell-initialize))
 
 (provide 'init)
 ;;; Local Variables:
