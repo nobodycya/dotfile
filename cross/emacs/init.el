@@ -282,6 +282,27 @@
   :config
   (setq prettify-symbols-unprettify-at-point 'right-edge))
 
+(use-package editorconfig
+  :ensure nil
+  :hook
+  (prog-mode . editorconfig-mode))
+
+(use-package cc-vars
+  :ensure nil
+  :config
+  (setq c-basic-offset 2))
+
+(use-package js
+  :ensure nil
+  :config
+  (setq js-indent-level 2))
+
+(use-package python
+  :ensure nil
+  :config
+  (setq python-indent-offset 4)
+  (setq python-interpreter "python3"))
+
 (use-package flymake
   :ensure nil
   :hook (prog-mode . flymake-mode)
@@ -340,19 +361,7 @@
   :defer 2
   :after (evil)
   :config
-  (evil-collection-init '(consult
-                          corfu
-                          dape
-                          dired-sidebar
-                          dired eglot
-                          embark
-                          eshell
-                          ibuffer
-                          minibuffer
-                          quickrun
-                          vertico
-                          wgrep
-                          vundo)))
+  (evil-collection-init))
 
 (use-package evil-visualstar
   :hook (evil-mode . global-evil-visualstar-mode))
