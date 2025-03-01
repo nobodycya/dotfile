@@ -43,6 +43,7 @@ set nowrap
 set showtabline=2
 set laststatus=2
 set wildmenu
+set wildoptions=pum
 set autoindent
 set cindent
 set smartindent
@@ -126,6 +127,7 @@ call plug#begin()
 " SYNTAX
 Plug 'sheerun/vim-polyglot', { 'on': [] }
 " UI
+Plug 'mhinz/vim-startify', { 'on': [] }
 Plug 'morhetz/gruvbox', { 'on': [] }
 Plug 'vim-airline/vim-airline', { 'on': [] }
 Plug 'ntpeters/vim-better-whitespace', { 'on': [] }
@@ -177,6 +179,9 @@ Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
 Plug 'dstein64/vim-startuptime', { 'on': ['StartupTime'] }
 Plug 'lambdalisue/vim-suda', { 'on': ['SudaRead', 'SudaWrite'] }
 Plug 'tpope/vim-fugitive', { 'on': ['G'] }
+if has('job') && has('channel')
+  Plug 'metakirby5/codi.vim', { 'on': ['Codi'] }
+endif
 " FORMATTING
 if has('python') || has('python3')
   Plug 'vim-autoformat/vim-autoformat', { 'on': ['Autoformat'] }
@@ -194,6 +199,33 @@ augroup LoadVimPolyglot
         \| autocmd! LoadVimPolyglot
 augroup END
 
+" UI: VIM-STARTIFY
+augroup LoadVimStartify
+  autocmd!
+  autocmd BufWinEnter * call plug#load('vim-startify')
+        \| autocmd! LoadVimStartify
+        \| let g:startify_files_number = 15
+        \| let g:startify_update_oldfiles = 10
+        \| let g:startify_padding_left = 5
+        \| let g:startify_custom_header = [
+        \ '        ⢀⣴⡾⠃⠄⠄⠄⠄⠄⠈⠺⠟⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣶⣤⡀  ',
+        \ '      ⢀⣴⣿⡿⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣷ ',
+        \ '     ⣴⣿⡿⡟⡼⢹⣷⢲⡶⣖⣾⣶⢄⠄⠄⠄⠄⠄⢀⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿ ',
+        \ '    ⣾⣿⡟⣾⡸⢠⡿⢳⡿⠍⣼⣿⢏⣿⣷⢄⡀⠄⢠⣾⢻⣿⣸⣿⣿⣿⣿⣿⣿⣿ ',
+        \ '  ⣡⣿⣿⡟⡼⡁⠁⣰⠂⡾⠉⢨⣿⠃⣿⡿⠍⣾⣟⢤⣿⢇⣿⢇⣿⣿⢿⣿⣿⣿⣿⣿ ',
+        \ ' ⣱⣿⣿⡟⡐⣰⣧⡷⣿⣴⣧⣤⣼⣯⢸⡿⠁⣰⠟⢀⣼⠏⣲⠏⢸⣿⡟⣿⣿⣿⣿⣿⣿ ',
+        \ ' ⣿⣿⡟⠁⠄⠟⣁⠄⢡⣿⣿⣿⣿⣿⣿⣦⣼⢟⢀⡼⠃⡹⠃⡀⢸⡿⢸⣿⣿⣿⣿⣿⡟ ',
+        \ ' ⣿⣿⠃⠄⢀⣾⠋⠓⢰⣿⣿⣿⣿⣿⣿⠿⣿⣿⣾⣅⢔⣕⡇⡇⡼⢁⣿⣿⣿⣿⣿⣿⢣ ',
+        \ ' ⣿⡟⠄⠄⣾⣇⠷⣢⣿⣿⣿⣿⣿⣿⣿⣭⣀⡈⠙⢿⣿⣿⡇⡧⢁⣾⣿⣿⣿⣿⣿⢏⣾ ',
+        \ ' ⣿⡇⠄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢻⠇⠄⠄⢿⣿⡇⢡⣾⣿⣿⣿⣿⣿⣏⣼⣿ ',
+        \ ' ⣿⣷⢰⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⢰⣧⣀⡄⢀⠘⡿⣰⣿⣿⣿⣿⣿⣿⠟⣼⣿⣿ ',
+        \ ' ⢹⣿⢸⣿⣿⠟⠻⢿⣿⣿⣿⣿⣿⣿⣿⣶⣭⣉⣤⣿⢈⣼⣿⣿⣿⣿⣿⣿⠏⣾⣹⣿⣿ ',
+        \ ' ⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿ ',
+        \ '  ⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋  ⣾⡌⢠⣿⡿⠃ ',
+        \ ' ⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉            ',
+        \ ]
+augroup END
+
 " UI: GRUVBOX
 augroup LoadGruvbox
   autocmd!
@@ -205,9 +237,9 @@ augroup END
 " UI: VIM-AIRLINE
 augroup LoadVimAirline
   autocmd!
-  autocmd BufReadPost * call plug#load('vim-airline')
+  autocmd BufReadPost,BufEnter * call plug#load('vim-airline')
         \| autocmd! LoadVimAirline
-        \| let g:airline_extensions = ['branch', 'tabline']
+        \| let g:airline_extensions = ['tabline', 'branch']
         \| let g:airline_left_sep = ''
         \| let g:airline_right_sep = ''
 augroup END
@@ -284,7 +316,7 @@ augroup END
 " EDITOR: VIM-GITGUTTER
 augroup LoadVimGitGutter
   autocmd!
-  autocmd BufReadPost * call plug#load('vim-gitgutter')
+  autocmd InsertEnter * call plug#load('vim-gitgutter')
         \| autocmd! LoadVimGitGutter
         \| call gitgutter#enable()
 augroup END
@@ -299,7 +331,7 @@ augroup END
 " EDITOR: VIM-MATCHUP
 augroup LoadVimMatchup
   autocmd!
-  autocmd BufReadPost * call plug#load('vim-matchup')
+  autocmd InsertEnter * call plug#load('vim-matchup')
         \| autocmd! LoadVimMatchup
 augroup END
 
@@ -340,7 +372,7 @@ augroup END
 " LINTING: ALE
 augroup LoadALE
   autocmd!
-  autocmd BufReadPost * call plug#load('ale')
+  autocmd InsertEnter * call plug#load('ale')
         \| autocmd! LoadALE
 augroup END
 
