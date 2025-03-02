@@ -121,6 +121,7 @@ autocmd BufWinEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| PlugInstall --sync
       \| source $MYVIMRC
       \| endif
+nnoremap <leader>vp :PlugStatus<cr>
 
 " INSTALL PLUGINS:
 call plug#begin()
@@ -149,6 +150,9 @@ Plug 'romainl/vim-cool', { 'on': [] }
 Plug 'dominikduda/vim_current_word', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'mg979/vim-visual-multi', { 'branch': 'master', 'on': [] }
+Plug 'kana/vim-textobj-user', { 'on': [] }
+Plug 'glts/vim-textobj-comment', { 'on': [] }
+Plug 'wellle/targets.vim', { 'on': [] }
 " LINTING
 Plug 'dense-analysis/ale', { 'on': [] }
 " COMPLETION
@@ -358,7 +362,23 @@ nnoremap <silent><localleader> :<C-u>WhichKey '<Space>'<cr>
 augroup LoadVimVisualMulti
   autocmd!
   autocmd BufReadPost * call plug#load('vim-visual-multi')
+        \| autocmd! LoadVimVisualMulti
         \| let g:VM_default_mappings = 1
+augroup END
+
+" EDITOR: VIM-TEXTOBJ-USER
+" EDITOR: VIM-TEXTOBJ-COMMENT
+augroup LoadTextObj
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-textobj-user', 'vim-textobj-comment')
+        \| autocmd! LoadTextObj
+augroup END
+
+" EDITOR: TARGETS.VIM
+augroup LoadTargets
+  autocmd!
+  autocmd BufReadPost * call plug#load('targets.vim')
+        \| autocmd! LoadTargets
 augroup END
 
 " LINTING: ALE
