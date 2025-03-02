@@ -151,6 +151,7 @@ Plug 'dominikduda/vim_current_word', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'mg979/vim-visual-multi', { 'branch': 'master', 'on': [] }
 Plug 'kana/vim-textobj-user', { 'on': [] }
+Plug 'kana/vim-textobj-indent', { 'on': [] }
 Plug 'glts/vim-textobj-comment', { 'on': [] }
 Plug 'wellle/targets.vim', { 'on': [] }
 " LINTING
@@ -367,11 +368,12 @@ augroup LoadVimVisualMulti
 augroup END
 
 " EDITOR: VIM-TEXTOBJ-USER
+" EDITOR: VIM-TEXTOBJ-INDENT
 " EDITOR: VIM-TEXTOBJ-COMMENT
-augroup LoadTextObj
+augroup LoadVimTextObj
   autocmd!
-  autocmd BufReadPost * call plug#load('vim-textobj-user', 'vim-textobj-comment')
-        \| autocmd! LoadTextObj
+  autocmd BufReadPost * call plug#load('vim-textobj-user', 'vim-textobj-indent', 'vim-textobj-comment')
+        \| autocmd! LoadVimTextObj
 augroup END
 
 " EDITOR: TARGETS.VIM
