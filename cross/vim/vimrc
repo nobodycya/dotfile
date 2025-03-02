@@ -134,6 +134,7 @@ Plug 'ntpeters/vim-better-whitespace', { 'on': [] }
 Plug 'machakann/vim-highlightedyank', { 'on': [] }
 Plug 'ryanoasis/vim-devicons', { 'on': [] }
 Plug 'wincent/terminus', { 'on': [] }
+Plug 'blueyed/vim-diminactive', { 'on': [] }
 " EDITOR
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
@@ -179,13 +180,12 @@ Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
 Plug 'dstein64/vim-startuptime', { 'on': ['StartupTime'] }
 Plug 'lambdalisue/vim-suda', { 'on': ['SudaRead', 'SudaWrite'] }
 Plug 'tpope/vim-fugitive', { 'on': ['G'] }
+Plug 'skywind3000/asyncrun.vim', { 'on': ['AsyncRun'] }
 if has('job') && has('channel')
   Plug 'metakirby5/codi.vim', { 'on': ['Codi'] }
 endif
 " FORMATTING
-if has('python') || has('python3')
-  Plug 'vim-autoformat/vim-autoformat', { 'on': ['Autoformat'] }
-endif
+Plug 'sbdchd/neoformat', { 'on': ['Neoformat'] }
 " DAP
 if has('python') || has('python3')
   Plug 'puremourning/vimspector', { 'on': ['VimspectorInstall', 'VimspectorUpdate', '<Plug>VimspectorToggleBreakpoint'] }
@@ -207,23 +207,8 @@ augroup LoadVimStartify
         \| let g:startify_files_number = 15
         \| let g:startify_update_oldfiles = 10
         \| let g:startify_padding_left = 5
-        \| let g:startify_custom_header = [
-        \ '        ⢀⣴⡾⠃⠄⠄⠄⠄⠄⠈⠺⠟⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣶⣤⡀  ',
-        \ '      ⢀⣴⣿⡿⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣷ ',
-        \ '     ⣴⣿⡿⡟⡼⢹⣷⢲⡶⣖⣾⣶⢄⠄⠄⠄⠄⠄⢀⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿ ',
-        \ '    ⣾⣿⡟⣾⡸⢠⡿⢳⡿⠍⣼⣿⢏⣿⣷⢄⡀⠄⢠⣾⢻⣿⣸⣿⣿⣿⣿⣿⣿⣿ ',
-        \ '  ⣡⣿⣿⡟⡼⡁⠁⣰⠂⡾⠉⢨⣿⠃⣿⡿⠍⣾⣟⢤⣿⢇⣿⢇⣿⣿⢿⣿⣿⣿⣿⣿ ',
-        \ ' ⣱⣿⣿⡟⡐⣰⣧⡷⣿⣴⣧⣤⣼⣯⢸⡿⠁⣰⠟⢀⣼⠏⣲⠏⢸⣿⡟⣿⣿⣿⣿⣿⣿ ',
-        \ ' ⣿⣿⡟⠁⠄⠟⣁⠄⢡⣿⣿⣿⣿⣿⣿⣦⣼⢟⢀⡼⠃⡹⠃⡀⢸⡿⢸⣿⣿⣿⣿⣿⡟ ',
-        \ ' ⣿⣿⠃⠄⢀⣾⠋⠓⢰⣿⣿⣿⣿⣿⣿⠿⣿⣿⣾⣅⢔⣕⡇⡇⡼⢁⣿⣿⣿⣿⣿⣿⢣ ',
-        \ ' ⣿⡟⠄⠄⣾⣇⠷⣢⣿⣿⣿⣿⣿⣿⣿⣭⣀⡈⠙⢿⣿⣿⡇⡧⢁⣾⣿⣿⣿⣿⣿⢏⣾ ',
-        \ ' ⣿⡇⠄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢻⠇⠄⠄⢿⣿⡇⢡⣾⣿⣿⣿⣿⣿⣏⣼⣿ ',
-        \ ' ⣿⣷⢰⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⢰⣧⣀⡄⢀⠘⡿⣰⣿⣿⣿⣿⣿⣿⠟⣼⣿⣿ ',
-        \ ' ⢹⣿⢸⣿⣿⠟⠻⢿⣿⣿⣿⣿⣿⣿⣿⣶⣭⣉⣤⣿⢈⣼⣿⣿⣿⣿⣿⣿⠏⣾⣹⣿⣿ ',
-        \ ' ⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿ ',
-        \ '  ⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋  ⣾⡌⢠⣿⡿⠃ ',
-        \ ' ⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉            ',
-        \ ]
+        \| let g:startify_padding_left = winwidth(0) / 3
+        \| let g:startify_custom_header = []
 augroup END
 
 " UI: GRUVBOX
@@ -271,6 +256,13 @@ augroup LoadTerminus
   autocmd!
   autocmd InsertEnter * call plug#load('terminus')
         \| autocmd! LoadTerminus
+augroup END
+
+" UI: VIM-DIMINACTIVE
+augroup LoadVimDimInactive
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-diminactive')
+        \| autocmd! LoadVimDimInactive
 augroup END
 
 " EDITOR: AUTO-PAIRS
