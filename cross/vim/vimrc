@@ -1,3 +1,6 @@
+" VIMRC ENCODING
+scriptencoding utf-8
+
 " REFERENCE:
 " https://github.com/junegunn/vim-plug/wiki/tips
 " https://github.com/skywind3000/vim-init
@@ -99,29 +102,60 @@ let g:loaded_vimballPlugin = 1
 let g:loaded_zipPlugin = 1
 
 " AUTOCMD:
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$')
-      \| exe "normal! g'\""
-      \| endif
-autocmd BufWinEnter * if getfsize(expand('%')) > 1048576
-      \| syntax clear
-      \| endif
-autocmd BufReadPost * setlocal formatoptions-=r formatoptions-=c formatoptions-=o
-autocmd FileType c,cpp setlocal commentstring=//\ %s
-autocmd FileType python,json,jsonc setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType help noremap <Buffer>q :bd<cr>
-autocmd FileType * syntax sync minlines=200
+augroup GoToLastPosition
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$')
+        \| exe "normal! g'\""
+        \| endif
+        \| autocmd! GoToLastPosition
+augroup END
+augroup DisableSyntaxInLargeFile
+  autocmd!
+  autocmd BufWinEnter * if getfsize(expand('%')) > 1048576
+        \| syntax clear
+        \| endif
+        \| autocmd! DisableSyntaxInLargeFile
+augroup END
+augroup DisableAutoCommentInNextLine
+  autocmd!
+  autocmd BufReadPost * setlocal formatoptions-=r formatoptions-=c formatoptions-=o
+        \| autocmd! DisableAutoCommentInNextLine
+augroup END
+augroup CustomCLangCommentStyle
+  autocmd!
+  autocmd FileType c,cpp setlocal commentstring=//\ %s
+        \| autocmd! CustomCLangCommentStyle
+augroup END
+augroup CustomIndentForSomeFileType
+  autocmd!
+  autocmd FileType python,json,jsonc setlocal shiftwidth=4 tabstop=4 softtabstop=4
+        \| autocmd! CustomIndentForSomeFileType
+augroup END
+augroup CloseWithQ
+  autocmd!
+  autocmd FileType help noremap <Buffer>q :bd<cr>
+        \| autocmd! CloseWithQ
+augroup END
 
 " VIM PLUG:
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd BufWinEnter * PlugInstall --sync
-        \| source $MYVIMRC
+  augroup VimPlugAutoInstall
+    autocmd!
+    autocmd BufWinEnter * PlugInstall --sync
+          \| source $MYVIMRC
+          \| autocmd! VimPlugAutoInstall
+  augroup END
 endif
-autocmd BufWinEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) > 0
-      \| PlugInstall --sync
-      \| source $MYVIMRC
-      \| endif
-nnoremap <leader>vp :PlugStatus<cr>
+augroup AutoInstallPlugins
+  autocmd!
+  autocmd BufWinEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) > 0
+        \| PlugInstall --sync
+        \| source $MYVIMRC
+        \| endif
+        \| autocmd! AutoInstallPlugins
+augroup END
+nnoremap <leader>P :PlugStatus<cr>
 
 " INSTALL PLUGINS:
 call plug#begin()
@@ -483,7 +517,11 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <Buffer> <expr><C-f> lsp#scroll(+4)
   nnoremap <Buffer> <expr><C-b> lsp#scroll(-4)
   let g:lsp_format_sync_timeout = 1000
-  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+  augroup ExecLspDocumentFormatSync
+    autocmd!
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+          \| autocmd! ExecLspDocumentFormatSync
+  augroup END
 endfunction
 augroup LspInstall
   autocmd!
@@ -497,7 +535,7 @@ nnoremap <leader>RR :QuickRun<cr>
 " TOOL: NERDTREE-GIT-PLUGIN
 let g:NERDTreeWinSize = 23
 let g:NERDTreeShowHidden = 1
-nnoremap <leader>tn :NERDTreeToggle<cr>
+nnoremap <leader>ft :NERDTreeToggle<cr>
 
 " TOOL: FZF
 " TOOL: FZF.VIM
@@ -513,10 +551,10 @@ nnoremap <leader><leader> :Commands<cr>
 
 " TOOL: VISTA
 let g:vista_default_executive = 'vim_lsp'
-nnoremap <leader>tv :Vista!!<cr>
+nnoremap <leader>lo :Vista!!<cr>
 
 " TOOL: UNDOTREE
-nnoremap <leader>tu :UndotreeToggle<cr>
+nnoremap <leader>fu :UndotreeToggle<cr>
 
 " TOOL: LIMELIGHT
 let g:limelight_conceal_ctermfg = 240
@@ -545,3 +583,6 @@ nnoremap <silent> <F3> :FloatermNext<cr>
 tnoremap <silent> <F3> <C-\><C-n>:FloatermNext<cr>
 nnoremap <silent> <F2> :FloatermToggle<cr>
 tnoremap <silent> <F2> <C-\><C-n>:FloatermToggle<cr>
+
+" FORMATTING: NEOFORMAT
+nnoremap <leader>lf :Neoformat<cr>
