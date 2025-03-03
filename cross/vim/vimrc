@@ -68,8 +68,8 @@ set pumheight=12
 set pumwidth=20
 
 " KEYBINDINGS:
-let mapleader = '\'
-let maplocalleader = ' '
+let mapleader = ' '
+let maplocalleader = ','
 nnoremap <leader>CE :edit $MYVIMRC<cr>
 nnoremap <leader>CR :source $MYVIMRC<cr>
 inoremap jk <esc>
