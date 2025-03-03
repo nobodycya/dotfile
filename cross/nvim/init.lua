@@ -360,6 +360,10 @@ require("lazy").setup({
 		},
 		{
 			"AstroNvim/astrocommunity",
+			import = "astrocommunity.programming-language-support.csv-vim",
+		},
+		{
+			"AstroNvim/astrocommunity",
 			import = "astrocommunity.code-runner.overseer-nvim",
 		},
 		{
