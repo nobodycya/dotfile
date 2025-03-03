@@ -310,6 +310,10 @@ require("lazy").setup({
 		-- },
 		-- {
 		-- 	"LazyVim/LazyVim",
+		-- 	import = "lazyvim.plugins.extras.test.core",
+		-- },
+		-- {
+		-- 	"LazyVim/LazyVim",
 		-- 	import = "lazyvim.plugins.extras.ui.treesitter-context",
 		-- },
 		-- AstroNvim --
@@ -401,6 +405,30 @@ require("lazy").setup({
 		{
 			"AstroNvim/astrocommunity",
 			import = "astrocommunity.diagnostics.trouble-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.color.nvim-highlight-colors",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.color.modes-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.markdown-and-latex.markdown-preview-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.snippet.nvim-snippets",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.motion.vim-matchup",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.test.neotest",
 		},
 	},
 	local_spec = true,
