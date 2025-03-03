@@ -189,6 +189,7 @@ Plug 'kana/vim-textobj-indent', { 'on': [] }
 Plug 'glts/vim-textobj-comment', { 'on': [] }
 Plug 'wellle/targets.vim', { 'on': [] }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " LINTING
 Plug 'dense-analysis/ale', { 'on': [] }
 " COMPLETION
