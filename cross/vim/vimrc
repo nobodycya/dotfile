@@ -188,6 +188,7 @@ Plug 'kana/vim-textobj-user', { 'on': [] }
 Plug 'kana/vim-textobj-indent', { 'on': [] }
 Plug 'glts/vim-textobj-comment', { 'on': [] }
 Plug 'wellle/targets.vim', { 'on': [] }
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " LINTING
 Plug 'dense-analysis/ale', { 'on': [] }
 " COMPLETION
