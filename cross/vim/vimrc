@@ -1,4 +1,4 @@
-" VIMRC ENCODING
+" VIMRC ENCODING:
 scriptencoding utf-8
 
 " REFERENCE:
@@ -68,8 +68,8 @@ set pumheight=12
 set pumwidth=20
 
 " KEYBINDINGS:
-let mapleader = ' '
-let maplocalleader = ','
+let mapleader = " "
+let maplocalleader = ","
 nnoremap <leader>CE :edit $MYVIMRC<cr>
 nnoremap <leader>CR :source $MYVIMRC<cr>
 inoremap jk <esc>
@@ -188,6 +188,7 @@ Plug 'kana/vim-textobj-user', { 'on': [] }
 Plug 'kana/vim-textobj-indent', { 'on': [] }
 Plug 'glts/vim-textobj-comment', { 'on': [] }
 Plug 'wellle/targets.vim', { 'on': [] }
+Plug 'matze/vim-move', { 'on': [] }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " LINTING
@@ -204,6 +205,7 @@ Plug 'mattn/vim-lsp-settings', { 'on': ['LspInstallServer', 'LspManageServers'] 
 Plug 'hrsh7th/vim-vsnip', { 'on': [] }
 Plug 'hrsh7th/vim-vsnip-integ', { 'on': [] }
 " TOOL
+Plug 'jpalardy/vim-slime', { 'on': [] }
 Plug 'thinca/vim-quickrun', { 'on': ['QuickRun'] }
 Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle'] }
@@ -392,8 +394,8 @@ augroup LoadVimCurrentWord
 augroup END
 
 " EDITOR: VIM-WHICH-KEY
-nnoremap <silent><leader> :<C-u>WhichKey '\'<cr>
-nnoremap <silent><localleader> :<C-u>WhichKey '<Space>'<cr>
+nnoremap <silent><leader> :<C-u>WhichKey '<Space>'<cr>
+nnoremap <silent><localleader> :<C-u>WhichKey ','<cr>
 
 " EDITOR: VIM-VISUAL-MULTI
 augroup LoadVimVisualMulti
@@ -417,6 +419,18 @@ augroup LoadTargets
   autocmd!
   autocmd BufReadPost * call plug#load('targets.vim')
         \| autocmd! LoadTargets
+augroup END
+
+" EDITOR: VIM-MOVE
+augroup LoadVimMove
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-move')
+        \| autocmd! LoadVimMove
+        \| let g:move_map_keys = 0
+        \| vmap <C-j> <Plug>MoveBlockDown
+        \| vmap <C-k> <Plug>MoveBlockUp
+        \| vmap <C-h> <Plug>MoveBlockLeft
+        \| vmap <C-l> <Plug>MoveBlockRight
 augroup END
 
 " LINTING: ALE
@@ -528,6 +542,21 @@ endfunction
 augroup LspInstall
   autocmd!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+        \| autocmd! LspInstall
+augroup END
+
+" TOOL: VIM-SLIME
+augroup LoadVimSlime
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-slime')
+        \| autocmd! LoadVimSlime
+        \| let g:slime_target = "vimterminal"
+        \| let g:slime_cell_delimiter = "#%%"
+        \| let g:slime_no_mappings = 1
+        \| let g:slime_dont_ask_default = 1
+        \| nmap <leader>sc :SlimeConfig<cr>
+        \| nmap <leader>sl <Plug>SlimeLineSend
+        \| vmap <leader>sr <Plug>SlimeRegionSend
 augroup END
 
 " TOOL: QUICKRUN
