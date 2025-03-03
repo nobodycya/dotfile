@@ -37,8 +37,8 @@ vim.opt.background = "dark"
 vim.cmd.colorscheme("habamax")
 
 --- KEYBINDING ---
-vim.g.mapleader = "\\"
-vim.g.maplocalleader = " "
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 vim.api.nvim_set_keymap("n", "<leader>CR", "<cmd>source $MYVIMRC<cr>", { desc = "Config: Reload" })
 vim.api.nvim_set_keymap("n", "<leader>CE", "<cmd>edit $MYVIMRC<cr>", { desc = "Config: Edit" })
 vim.api.nvim_set_keymap("i", "jk", "<esc>", { desc = "Back to Normal Mode" })
@@ -114,10 +114,10 @@ vim.api.nvim_create_autocmd("FileType", {
 				vim.cmd("close")
 				pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
 			end, {
-				buffer = event.buf,
-				silent = true,
-				desc = "Quit buffer",
-			})
+					buffer = event.buf,
+					silent = true,
+					desc = "Quit buffer",
+				})
 		end)
 	end,
 })
