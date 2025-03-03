@@ -384,11 +384,23 @@ require("lazy").setup({
 		},
 		{
 			"AstroNvim/astrocommunity",
+			import = "astrocommunity.editing-support.todo-comments-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
 			import = "astrocommunity.lsp.lsp-signature-nvim",
 		},
 		{
 			"AstroNvim/astrocommunity",
+			import = "astrocommunity.lsp.lspsaga-nvim",
+		},
+		{
+			"AstroNvim/astrocommunity",
 			import = "astrocommunity.utility.neodim",
+		},
+		{
+			"AstroNvim/astrocommunity",
+			import = "astrocommunity.diagnostics.trouble-nvim",
 		},
 	},
 	local_spec = true,
