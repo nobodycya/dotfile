@@ -255,6 +255,7 @@ augroup LoadVimStartify
         \| let g:startify_padding_left = 5
         \| let g:startify_padding_left = winwidth(0) / 3
         \| let g:startify_custom_header = []
+        \| nnoremap <leader>ts :Startify<cr>
 augroup END
 
 " UI: GRUVBOX
@@ -451,6 +452,8 @@ let g:which_key_map['t'] = {
       \ 'r': [':QuickRun', 'Run Code'],
       \ 'n': [':NERDTreeToggle', 'File Tree'],
       \ 'u': [':UndotreeToggle', 'Undo Tree'],
+      \ 's': [':Startify', 'Startify Page'],
+      \ 't': [':StartupTime', 'StartupTime'],
       \ }
 let g:which_key_map['s'] = {
       \ 'name': '+Send',
@@ -686,6 +689,9 @@ nnoremap <silent><F3> :FloatermToggle<cr>
 tnoremap <silent><F3> <C-\><C-n>:FloatermToggle<cr>
 nnoremap <silent><F4> :FloatermNext<cr>
 tnoremap <silent><F4> <C-\><C-n>:FloatermNext<cr>
+
+" TOOL: VIM-STARTUPTIME
+nnoremap <leader>tt :StartupTime<cr>
 
 " FORMATTING: NEOFORMAT
 nnoremap <leader>lf :Neoformat<cr>
