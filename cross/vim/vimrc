@@ -9,7 +9,7 @@ scriptencoding utf-8
 " https://gitee.com/mirrorvim/vim-fast/blob/master/vimrc-no-plug
 " https://github.com/chenxuan520/vim-fast
 " https://github.com/spf13/spf13-vim
-" https://github.com/hanleylee/dotvim?tab=readme-ov-file
+" https://github.com/hanleylee/dotvim
 
 " GUI:
 if has('gui-running')
