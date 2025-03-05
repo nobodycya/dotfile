@@ -9,6 +9,7 @@ scriptencoding utf-8
 " https://gitee.com/mirrorvim/vim-fast/blob/master/vimrc-no-plug
 " https://github.com/chenxuan520/vim-fast
 " https://github.com/spf13/spf13-vim
+" https://github.com/hanleylee/dotvim?tab=readme-ov-file
 
 " GUI:
 if has('gui-running')
@@ -68,8 +69,8 @@ set pumheight=12
 set pumwidth=20
 
 " KEYBINDINGS:
-let mapleader = " "
-let maplocalleader = ","
+let mapleader = ' '
+let maplocalleader = ','
 nnoremap <leader>CE :edit $MYVIMRC<cr>
 nnoremap <leader>CR :source $MYVIMRC<cr>
 inoremap jk <esc>
@@ -174,10 +175,13 @@ Plug 'ryanoasis/vim-devicons', { 'on': [] }
 Plug 'wincent/terminus', { 'on': [] }
 Plug 'blueyed/vim-diminactive', { 'on': [] }
 " EDITOR
+Plug 'tpope/vim-unimpaired', { 'on': [] }
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
 Plug 'tpope/vim-commentary', { 'on': [] }
-Plug 'Yggdroot/indentLine', { 'on': [] }
+if has('conceal')
+  Plug 'Yggdroot/indentLine', { 'on': [] }
+endif
 Plug 'wellle/context.vim', { 'on': [] }
 Plug 'airblade/vim-gitgutter', { 'on': [] }
 Plug 'ap/vim-css-color', { 'on': [] }
@@ -225,11 +229,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
 Plug 'dstein64/vim-startuptime', { 'on': ['StartupTime'] }
 Plug 'lambdalisue/vim-suda', { 'on': ['SudaRead', 'SudaWrite'] }
-Plug 'tpope/vim-fugitive', { 'on': ['G'] }
+Plug 'tpope/vim-fugitive', { 'on': ['G', 'GV', 'GV!'] }
+Plug 'junegunn/gv.vim', { 'on': ['G', 'GV', 'GV!'] }
 Plug 'skywind3000/asyncrun.vim', { 'on': ['AsyncRun'] }
 if has('job') && has('channel')
   Plug 'metakirby5/codi.vim', { 'on': ['Codi'] }
 endif
+Plug 'vim-test/vim-test', { 'on': ['TestNearest', 'TestFile', 'TestSuite', 'TestLast', 'TestVisit'] }
 " FORMATTING
 Plug 'sbdchd/neoformat', { 'on': ['Neoformat'] }
 " DAP
@@ -322,6 +328,13 @@ augroup LoadVimDimInactive
   autocmd!
   autocmd BufReadPost * call plug#load('vim-diminactive')
         \| autocmd! LoadVimDimInactive
+augroup END
+
+" EDITOR: VIM-UNIMPAIRED
+augroup LoadVimUninpaired
+  autocmd!
+  autocmd BufReadPost * call plug#load('vim-unimpaired')
+        \| autocmd! LoadVimUninpaired
 augroup END
 
 " EDITOR: AUTO-PAIRS
@@ -679,8 +692,9 @@ augroup LoadVimSneak
 augroup END
 
 " TOOL: VIM-FLOATERM
-let g:floaterm_wintype = 'split'
-let g:floaterm_height = 0.4
+let g:floaterm_wintype = 'float'
+let g:floaterm_height = 0.88
+let g:floaterm_width = 0.92
 nnoremap <silent><F1> :FloatermNew<cr>
 tnoremap <silent><F1> <C-\><C-n>:FloatermNew<cr>
 nnoremap <silent><F2> :FloatermPrev<cr>
