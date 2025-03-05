@@ -256,18 +256,22 @@ augroup LoadVimStartify
   autocmd!
   autocmd BufWinEnter * call plug#load('vim-startify')
         \| autocmd! LoadVimStartify
+        \| let g:startify_bookmarks = ['~/.vim/vimrc']
+        \| let g:startify_session_autoload = 1
         \| let g:startify_files_number = 15
         \| let g:startify_update_oldfiles = 10
         \| let g:startify_padding_left = 5
-        \| let g:startify_padding_left = winwidth(0) / 3
         \| let g:startify_custom_header = []
+        \| let g:startify_update_oldfiles = 1
+        \| let g:startify_relative_path = 1
+        \| let g:startify_padding_left = winwidth(0) / 3
         \| nnoremap <leader>ts :Startify<cr>
 augroup END
 
 " UI: GRUVBOX
 augroup LoadGruvbox
   autocmd!
-  autocmd BufReadPost,BufEnter * call plug#load('gruvbox')
+  autocmd BufReadPost,BufWinEnter * call plug#load('gruvbox')
         \| autocmd! LoadGruvbox
         \| colorscheme gruvbox
 augroup END
@@ -275,7 +279,7 @@ augroup END
 " UI: VIM-AIRLINE
 augroup LoadVimAirline
   autocmd!
-  autocmd BufReadPost,BufEnter * call plug#load('vim-airline')
+  autocmd BufReadPost,BufWinEnter * call plug#load('vim-airline')
         \| autocmd! LoadVimAirline
         \| let g:airline_extensions = ['tabline', 'branch']
         \| let g:airline_left_sep = ''
@@ -312,8 +316,13 @@ augroup END
 " UI: VIM-DEVICONS
 augroup LoadVimDevIcons
   autocmd!
-  autocmd BufReadPost * call plug#load('vim-devicons')
+  autocmd BufWinEnter,BufReadPost * call plug#load('vim-devicons')
         \| autocmd! LoadVimDevIcons
+        \| let g:webdevicons_enable = 1
+        \| let g:webdevicons_enable_nerdtree = 1
+        \| let g:webdevicons_enable_airline_tabline = 1
+        \| let g:webdevicons_enable_airline_statusline = 1
+        \| let g:webdevicons_enable_startify = 1
 augroup END
 
 " UI: TERMINUS
