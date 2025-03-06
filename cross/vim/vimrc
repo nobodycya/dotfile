@@ -10,6 +10,8 @@ scriptencoding utf-8
 " https://github.com/chenxuan520/vim-fast
 " https://github.com/spf13/spf13-vim
 " https://github.com/hanleylee/dotvim
+" https://github.com/wsdjeg/SpaceVim
+" https://github.com/liuchengxu/space-vim
 
 " GUI:
 if has('gui-running')
