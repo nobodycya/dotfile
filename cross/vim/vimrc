@@ -406,7 +406,7 @@ augroup END
 " EDITOR: VIM-MATCHUP
 augroup LoadVimMatchup
   autocmd!
-  autocmd InsertEnter * call plug#load('vim-matchup')
+  autocmd BufReadPost * call plug#load('vim-matchup')
         \| autocmd! LoadVimMatchup
 augroup END
 
