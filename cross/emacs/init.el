@@ -559,6 +559,9 @@
 (use-package json-mode)
 (use-package markdown-mode)
 
+(use-package tide
+  :after (typescript-mode))
+
 (use-package gcmh
   :hook (after-init . gcmh-mode)
   :config
