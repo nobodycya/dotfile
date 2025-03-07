@@ -26,7 +26,7 @@ window_effects:
   focused_window:
     border:
       enabled: true
-      color: '#357ec7'
+      color: '#a6da95'
     hide_title_bar:
       enabled: false
     corner_style:
@@ -35,7 +35,7 @@ window_effects:
   other_windows:
     border:
       enabled: true
-      color: '#111111'
+      color: '#494d64'
     hide_title_bar:
       enabled: false
     corner_style:
@@ -54,33 +54,43 @@ window_behavior:
 
 workspaces:
   - name: '1'
+    display_name: '1'
     bind_to_monitor: 0
     keep_alive: false
   - name: '2'
+    display_name: '2'
     bind_to_monitor: 0
     keep_alive: false
   - name: '3'
+    display_name: '3'
     bind_to_monitor: 0
     keep_alive: false
   - name: '4'
+    display_name: '4'
     bind_to_monitor: 0
     keep_alive: false
   - name: '5'
+    display_name: '5'
     bind_to_monitor: 0
     keep_alive: false
   - name: '6'
+    display_name: '6'
     bind_to_monitor: 1
     keep_alive: false
   - name: '7'
+    display_name: '7'
     bind_to_monitor: 1
     keep_alive: false
   - name: '8'
+    display_name: '8'
     bind_to_monitor: 1
     keep_alive: false
   - name: '9'
+    display_name: '9'
     bind_to_monitor: 1
     keep_alive: false
   - name: '10'
+    display_name: '0'
     bind_to_monitor: 1
     keep_alive: false
 
