@@ -62,7 +62,11 @@
             {
                 "antialiasingMode": "cleartype",
                 "autoMarkPrompts": false,
-                "bellStyle": ["audible", "window", "taskbar"],
+                "bellStyle": [
+                    "audible",
+                    "window",
+                    "taskbar"
+                ],
                 "colorScheme": "MyTheme",
                 "commandline": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "cursorShape": "filledBox",
@@ -88,7 +92,11 @@
             {
                 "antialiasingMode": "cleartype",
                 "autoMarkPrompts": false,
-                "bellStyle": ["audible", "window", "taskbar"],
+                "bellStyle": [
+                    "audible",
+                    "window",
+                    "taskbar"
+                ],
                 "colorScheme": "MyTheme",
                 "cursorShape": "filledBox",
                 "elevate": false,
@@ -169,40 +177,40 @@
     "schemes": [
         {
             "name": "MyTheme",
-            "cursorColor": "#ffffff",
-            "selectionBackground": "#868686",
-            "background": "#181818",
-            "foreground": "#ffffff",
-            "black": "#181818",
-            "red": "#f44747",
-            "green": "#4ec9b0",
-            "yellow": "#d7ba7d",
-            "blue": "#569cd6",
-            "purple": "#c586c0",
-            "cyan": "#9cdcfe",
-            "white": "#cccccc",
+            "cursorColor": "#F5E0DC",
+            "selectionBackground": "#585B70",
+            "background": "#11111B",
+            "foreground": "#CDD6F4",
+            "black": "#45475A",
+            "red": "#F38BA8",
+            "green": "#A6E3A1",
+            "yellow": "#F9E2AF",
+            "blue": "#89B4FA",
+            "purple": "#F5C2E7",
+            "cyan": "#94E2D5",
+            "white": "#BAC2DE",
             "brightBlack": "#585B70",
-            "brightRed": "#f44747",
-            "brightGreen": "#4ec9b0",
-            "brightYellow": "#d7ba7d",
-            "brightBlue": "#569cd6",
-            "brightPurple": "#c586c0",
-            "brightCyan": "#9cdcfe",
-            "brightWhite": "#ffffff"
+            "brightRed": "#F38BA8",
+            "brightGreen": "#A6E3A1",
+            "brightYellow": "#F9E2AF",
+            "brightBlue": "#89B4FA",
+            "brightPurple": "#F5C2E7",
+            "brightCyan": "#94E2D5",
+            "brightWhite": "#A6ADC8"
         }
     ],
     "themes": [
         {
             "name": "MyTheme",
             "tab": {
-                "background": "#181818",
+                "background": "#1E1E2EFF",
                 "iconStyle": "monochrome",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
             "tabRow": {
-                "background": "#181818",
-                "unfocusedBackground": "#181818"
+                "background": "#181825FF",
+                "unfocusedBackground": "#11111BFF"
             },
             "window": {
                 "applicationTheme": "dark",
