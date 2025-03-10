@@ -15,18 +15,18 @@ general:
 
 gaps:
   scale_with_dpi: true
-  inner_gap: '8px'
+  inner_gap: '6px'
   outer_gap:
-    top: '40px'
-    right: '8px'
-    bottom: '8px'
-    left: '8px'
+    top: '36px'
+    right: '6px'
+    bottom: '6px'
+    left: '6px'
 
 window_effects:
   focused_window:
     border:
       enabled: true
-      color: '#a6da95'
+      color: '#a6e3a1'
     hide_title_bar:
       enabled: false
     corner_style:
@@ -35,7 +35,7 @@ window_effects:
   other_windows:
     border:
       enabled: true
-      color: '#494d64'
+      color: '#45475a'
     hide_title_bar:
       enabled: false
     corner_style:
