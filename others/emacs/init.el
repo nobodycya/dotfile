@@ -158,14 +158,6 @@
   :ensure nil
   :hook (after-init . global-auto-revert-mode))
 
-(use-package uniquify
-  :ensure nil
-  :config
-  (setq uniquify-buffer-name-style 'reverse)
-  (setq uniquify-separator " • ")
-  (setq uniquify-after-kill-buffer-p t)
-  (setq uniquify-ignore-buffers-re "^\\*"))
-
 (use-package display-fill-column-indicator
   :ensure nil
   :hook (prog-mode . display-fill-column-indicator-mode)
@@ -219,13 +211,6 @@
   :ensure nil
   :hook (after-init . save-place-mode))
 
-(use-package isearch
-  :ensure nil
-  :config
-  (setq isearch-lazy-count t)
-  (setq isearch-allow-motion t)
-  (setq isearch-motion-changes-direction t))
-
 (use-package minibuffer
   :ensure nil
   :hook (after-init . minibuffer-depth-indicate-mode)
@@ -234,7 +219,7 @@
 
 (use-package treesit
   :ensure nil
-  :defer 20
+  :defer 10
   :config
   (setq treesit-language-source-alist
         '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
@@ -287,22 +272,6 @@
   :hook
   (prog-mode . editorconfig-mode))
 
-(use-package cc-vars
-  :ensure nil
-  :config
-  (setq c-basic-offset 2))
-
-(use-package js
-  :ensure nil
-  :config
-  (setq js-indent-level 2))
-
-(use-package python
-  :ensure nil
-  :config
-  (setq python-indent-offset 4)
-  (setq python-interpreter "python3"))
-
 (use-package flymake
   :ensure nil
   :hook (prog-mode . flymake-mode)
@@ -319,25 +288,6 @@
   (setq doom-modeline-minor-modes t)
   (setq doom-modeline-height 25)
   (setq doom-modeline-bar-width 5))
-
-(use-package minions
-  :hook (doom-modeline-mode . minions-mode))
-
-(use-package centaur-tabs
-  :hook (prog-mode . centaur-tabs-mode)
-  :bind
-  (("C-<prior>" . centaur-tabs-backward)
-   ("C-<next>" . centaur-tabs-forward))
-  :config
-  (setq centaur-tabs-set-bar 'over)
-  (setq centaur-tabs-style "bar")
-  (setq centaur-tabs-height 28)
-  (setq centaur-tabs-set-icons t)
-  (setq centaur-tabs-icon-type 'nerd-icons))
-
-(use-package hide-mode-line
-  :hook
-  (eshell-mode . hide-mode-line-mode))
 
 (use-package solaire-mode
   :defer 5
@@ -363,9 +313,6 @@
   :config
   (evil-collection-init))
 
-(use-package evil-visualstar
-  :hook (evil-mode . global-evil-visualstar-mode))
-
 (use-package evil-escape
   :hook (evil-mode . evil-escape-mode)
   :config
@@ -375,9 +322,6 @@
 (use-package evil-matchit
   :hook (evil-mode . global-evil-matchit-mode))
 
-(use-package evil-surround
-  :hook (evil-mode . global-evil-surround-mode))
-
 (use-package evil-nerd-commenter
   :after (evil)
   :bind
@@ -386,28 +330,8 @@
   (:map evil-visual-state-map
         (("gc" . evilnc-comment-or-uncomment-lines))))
 
-(use-package evil-goggles
-  :hook (evil-mode . evil-goggles-mode)
-  :config
-  (setq evil-goggles-pulse t)
-  (setq evil-goggles-duration 1.000))
-
-(use-package evil-args
-  :after (evil)
-  :bind
-  (:map evil-normal-state-map
-        ("L" . evil-forward-arg)
-        ("H" . evil-backward-arg)))
-
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package indent-bars
-  :hook ((prog-mode yaml-mode) . indent-bars-mode)
-  :config
-  (setq indent-bars-color '(highlight :face-bg t :blend 0.225))
-  (setq indent-bars-no-descend-string t)
-  (setq indent-bars-prefer-character t))
 
 (use-package colorful-mode
   :hook (prog-mode . global-colorful-mode))
@@ -428,12 +352,6 @@
 
 (use-package diredfl
   :hook (dired-mode . diredfl-mode))
-
-(use-package nerd-icons-dired
-  :hook (dired-mode . nerd-icons-dired-mode))
-
-(use-package nerd-icons-ibuffer
-  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
 (use-package corfu
   :hook
@@ -509,18 +427,10 @@
   :config
   (setq wgrep-auto-save-buffer t))
 
-(use-package breadcrumb
-  :hook (prog-mode . breadcrumb-mode))
-
 (use-package ace-window
   :bind (("C-x o" . ace-window))
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
-
-(use-package winum
-  :defer 5
-  :config
-  (winum-mode))
 
 (use-package yasnippet
   :hook (prog-mode . yas-global-mode))
@@ -531,36 +441,8 @@
   :init
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
-(use-package avy
-  :bind
-  (("M-g w" . avy-goto-word-0)
-   ("M-g l" . avy-goto-line)
-   ("M-g t" . avy-goto-char-timer)))
-
 (use-package git-gutter
   :hook (prog-mode . global-git-gutter-mode))
-
-(use-package dired-sidebar
-  :bind
-  (("<f1>" . dired-toggle-toggle-sidebar)))
-
-(use-package lua-mode
-  :config
-  (setq lua-indent-level 2)
-  (setq lua-indent-nested-block-content-align nil)
-  (setq lua-indent-close-paren-align nil))
-
-(use-package go-mode)
-(use-package typescript-mode)
-(use-package cmake-mode)
-(use-package csv-mode)
-(use-package toml-mode)
-(use-package yaml-mode)
-(use-package json-mode)
-(use-package markdown-mode)
-
-(use-package tide
-  :after (typescript-mode))
 
 (use-package gcmh
   :hook (after-init . gcmh-mode)
@@ -594,19 +476,6 @@
    ("M-g M-p" . symbol-overlay-switch-backward)
    ("M-g M-r" . symbol-overlay-remove-all)))
 
-(use-package beacon
-  :defer 5
-  :config
-  (setq beacon-size 30)
-  (setq beacon-color 0.6)
-  (setq beacon-blink-duration 0.5)
-  (setq beacon-blink-delay 0.5)
-  (setq beacon-blink-when-window-scrolls t)
-  (setq beacon-blink-when-window-changes t)
-  (setq beacon-blink-when-point-moves-horizontally 3)
-  (setq beacon-blink-when-point-moves-vertically 3)
-  (beacon-mode))
-
 (use-package helpful
   :bind
   (([remap describe-key] . helpful-key)
@@ -615,67 +484,15 @@
    ([remap describe-command] . helpful-command)
    ("C-c C-d" . helpful-at-point)))
 
-(use-package mode-line-bell
-  :defer 5
-  :config
-  (mode-line-bell-mode))
-
-(use-package magit
-  :commands (magit))
-
-(use-package olivetti
-  :commands (olivetti-mode))
-
-(use-package vundo
-  :commands (vundo))
-
 (use-package quickrun
   :commands (quickrun)
   :config
   (setq quickrun-focus-p nil))
 
-(use-package dape
-  :bind (("<f5>" . dape)))
-
-(use-package general
-  :defer 5
-  :config
-  (general-create-definer spc-leader-def
-    :prefix "SPC"
-    :states '(normal visual))
-  (spc-leader-def
-    "SPC" 'execute-extended-command
-    "1" 'winum-select-window-1
-    "2" 'winum-select-window-2
-    "3" 'winum-select-window-3
-    "4" 'winum-select-window-4
-    "5" 'winum-select-window-5
-    "6" 'winum-select-window-6
-    "7" 'winum-select-window-7
-    "8" 'winum-select-window-8
-    "9" 'winum-select-window-9
-    "0" 'winum-select-window-0-or-10
-    "ff" 'consult-find
-    "fb" 'consult-buffer
-    "fo" 'consult-outline
-    "fw" 'consult-ripgrep
-    "fc" 'consult-theme
-    "ww" 'ace-window
-    "gl" 'avy-goto-line
-    "gw" 'avy-goto-word-0
-    "gc" 'avy-goto-char-timer
-    "RR" 'quickrun))
-
 (use-package esup
   :commands (esup)
   :config
   (setq esup-depth 0))
-
-(use-package exec-path-from-shell
-  :when (memq window-system '(mac ns x))
-  :defer 10
-  :config
-  (exec-path-from-shell-initialize))
 
 (provide 'init)
 ;;; Local Variables:
