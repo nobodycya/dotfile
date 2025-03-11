@@ -171,35 +171,17 @@ Plug 'sheerun/vim-polyglot', { 'on': [] }
 Plug 'mhinz/vim-startify', { 'on': [] }
 Plug 'morhetz/gruvbox', { 'on': [] }
 Plug 'vim-airline/vim-airline', { 'on': [] }
-Plug 'ntpeters/vim-better-whitespace', { 'on': [] }
 Plug 'machakann/vim-highlightedyank', { 'on': [] }
-Plug 'ryanoasis/vim-devicons', { 'on': [] }
-Plug 'wincent/terminus', { 'on': [] }
-Plug 'blueyed/vim-diminactive', { 'on': [] }
 " EDITOR
-Plug 'tpope/vim-unimpaired', { 'on': [] }
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
 Plug 'tpope/vim-commentary', { 'on': [] }
 if has('conceal')
   Plug 'Yggdroot/indentLine', { 'on': [] }
 endif
-Plug 'wellle/context.vim', { 'on': [] }
 Plug 'airblade/vim-gitgutter', { 'on': [] }
 Plug 'ap/vim-css-color', { 'on': [] }
-Plug 'andymass/vim-matchup', { 'on': [] }
-Plug 'tpope/vim-surround', { 'on': [] }
-Plug 'romainl/vim-cool', { 'on': [] }
-Plug 'dominikduda/vim_current_word', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-Plug 'mg979/vim-visual-multi', { 'branch': 'master', 'on': [] }
-Plug 'kana/vim-textobj-user', { 'on': [] }
-Plug 'kana/vim-textobj-indent', { 'on': [] }
-Plug 'glts/vim-textobj-comment', { 'on': [] }
-Plug 'wellle/targets.vim', { 'on': [] }
-Plug 'matze/vim-move', { 'on': [] }
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " LINTING
 Plug 'dense-analysis/ale', { 'on': [] }
 " COMPLETION
@@ -214,36 +196,11 @@ Plug 'mattn/vim-lsp-settings', { 'on': ['LspInstallServer', 'LspManageServers'] 
 Plug 'hrsh7th/vim-vsnip', { 'on': [] }
 Plug 'hrsh7th/vim-vsnip-integ', { 'on': [] }
 " TOOL
-Plug 'jpalardy/vim-slime', { 'on': [] }
 Plug 'thinca/vim-quickrun', { 'on': ['QuickRun'] }
-Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle'] }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle'] }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Buffers', 'Colors', 'Lines', 'BLines', 'History', 'Commands', 'Rg'] }
-Plug 'liuchengxu/vista.vim', { 'on': ['Vista', 'Vista!', 'Vista!!'] }
-Plug 'mbbill/undotree', { 'on': ['UndotreeToggle'] }
-Plug 'junegunn/limelight.vim', { 'on': ['Limelight'] }
-Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
-Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
-Plug 'easymotion/vim-easymotion', { 'on': ['<Plug>(easymotion-bd-jk)', '<Plug>(easymotion-bd-w)', '<Plug>(easymotion-overwin-f2)'] }
-Plug 'justinmk/vim-sneak', { 'on': [] }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'], 'on': ['MarkdownPreview'] }
-Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
-Plug 'dstein64/vim-startuptime', { 'on': ['StartupTime'] }
-Plug 'lambdalisue/vim-suda', { 'on': ['SudaRead', 'SudaWrite'] }
-Plug 'tpope/vim-fugitive', { 'on': ['G', 'GV', 'GV!'] }
-Plug 'junegunn/gv.vim', { 'on': ['G', 'GV', 'GV!'] }
-Plug 'skywind3000/asyncrun.vim', { 'on': ['AsyncRun'] }
-if has('job') && has('channel')
-  Plug 'metakirby5/codi.vim', { 'on': ['Codi'] }
-endif
-Plug 'vim-test/vim-test', { 'on': ['TestNearest', 'TestFile', 'TestSuite', 'TestLast', 'TestVisit'] }
 " FORMATTING
 Plug 'sbdchd/neoformat', { 'on': ['Neoformat'] }
-" DAP
-if has('python') || has('python3')
-  Plug 'puremourning/vimspector', { 'on': ['VimspectorInstall', 'VimspectorUpdate', '<Plug>VimspectorToggleBreakpoint'] }
-endif
 call plug#end()
 
 " SYNTAX: VIM-POLYGLOT
@@ -298,52 +255,12 @@ augroup LoadVimAirline
         \| nmap <leader>9 <Plug>AirlineSelectTab9
 augroup END
 
-" UI: VIM-BETTER-WHITESPACE
-augroup LoadVimBetterWhiteSpace
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-better-whitespace')
-        \| autocmd! LoadVimBetterWhiteSpace
-augroup END
-
 " UI: VIM-HIGHLIGHTEDYANK
 augroup LoadVimHighlightYank
   autocmd!
   autocmd BufReadPost * call plug#load('vim-highlightedyank')
         \| autocmd! LoadVimHighlightYank
         \| let g:highlightedyank_highlight_duration = 1000
-augroup END
-
-" UI: VIM-DEVICONS
-augroup LoadVimDevIcons
-  autocmd!
-  autocmd BufWinEnter,BufReadPost * call plug#load('vim-devicons')
-        \| autocmd! LoadVimDevIcons
-        \| let g:webdevicons_enable = 1
-        \| let g:webdevicons_enable_nerdtree = 1
-        \| let g:webdevicons_enable_airline_tabline = 1
-        \| let g:webdevicons_enable_airline_statusline = 1
-        \| let g:webdevicons_enable_startify = 1
-augroup END
-
-" UI: TERMINUS
-augroup LoadTerminus
-  autocmd!
-  autocmd InsertEnter * call plug#load('terminus')
-        \| autocmd! LoadTerminus
-augroup END
-
-" UI: VIM-DIMINACTIVE
-augroup LoadVimDimInactive
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-diminactive')
-        \| autocmd! LoadVimDimInactive
-augroup END
-
-" EDITOR: VIM-UNIMPAIRED
-augroup LoadVimUninpaired
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-unimpaired')
-        \| autocmd! LoadVimUninpaired
 augroup END
 
 " EDITOR: AUTO-PAIRS
@@ -378,14 +295,6 @@ augroup LoadIndentLine
         \| let g:indentLine_char_list = ['│']
 augroup END
 
-" EDITOR: CONTEXT.VIM
-augroup LoadContextVim
-  autocmd!
-  autocmd BufReadPost * call plug#load('context.vim')
-        \| autocmd! LoadContextVim
-        \| let g:context_max_height = 1
-augroup END
-
 " EDITOR: VIM-GITGUTTER
 augroup LoadVimGitGutter
   autocmd!
@@ -401,49 +310,10 @@ augroup LoadVimCSSColor
         \| autocmd! LoadVimCSSColor
 augroup END
 
-" EDITOR: VIM-MATCHUP
-augroup LoadVimMatchup
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-matchup')
-        \| autocmd! LoadVimMatchup
-augroup END
-
-" EDITOR: VIM-SURROUND
-augroup LoadVimSurround
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-surround')
-        \| autocmd! LoadVimSurround
-augroup END
-
-" EDITOR: VIM-COOL
-augroup LoadVimCool
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-cool')
-        \| autocmd! LoadVimCool
-augroup END
-
-" EDITOR: VIM_CURRENT_WORD
-augroup LoadVimCurrentWord
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim_current_word')
-        \| autocmd! LoadVimCurrentWord
-        \| let g:vim_current_word#highlight_delay = 1
-        \| highlight CurrentWordTwins ctermbg=240 cterm=bold
-augroup END
-
 " EDITOR: VIM-WHICH-KEY
 nnoremap <silent><leader> :<C-u>WhichKey '<Space>'<cr>
 nnoremap <silent><localleader> :<C-u>WhichKey ','<cr>
 let g:which_key_map = {}
-let g:which_key_map.1 = 'Buffer 1'
-let g:which_key_map.2 = 'Buffer 2'
-let g:which_key_map.3 = 'Buffer 3'
-let g:which_key_map.4 = 'Buffer 4'
-let g:which_key_map.5 = 'Buffer 5'
-let g:which_key_map.6 = 'Buffer 6'
-let g:which_key_map.7 = 'Buffer 7'
-let g:which_key_map.8 = 'Buffer 8'
-let g:which_key_map.9 = 'Buffer 9'
 let g:which_key_map['l'] = {
       \ 'name': '+LSP',
       \ 'f': [':Neoformat', 'Format'],
@@ -464,23 +334,11 @@ let g:which_key_map['f'] = {
       \ 's': [':BLines', 'Search in Current Buffer'],
       \ 'w': [':Rg', 'Words'],
       \ }
-let g:which_key_map['g'] = {
-      \ 'name': '+Go',
-      \ 'w': ['<Plug>(easymotion-bd-w)', 'Word'],
-      \ 'l': ['<Plug>(easymotion-bd-jk)', 'Line'],
-      \ }
 let g:which_key_map['t'] = {
       \ 'name': '+Toggle',
       \ 'r': [':QuickRun', 'Run Code'],
-      \ 'n': [':NERDTreeToggle', 'File Tree'],
-      \ 'u': [':UndotreeToggle', 'Undo Tree'],
       \ 's': [':Startify', 'Startify Page'],
       \ 't': [':StartupTime', 'StartupTime'],
-      \ }
-let g:which_key_map['s'] = {
-      \ 'name': '+Send',
-      \ 'c': [':SlimeConfig', 'Slime: Setup Config'],
-      \ 'l': ['<Plug>SlimeLineSend', 'Send Current Line to REPL'],
       \ }
 let g:which_key_map['b'] = {
       \ 'name': '+Buffer',
@@ -492,42 +350,6 @@ augroup LoadVimWhichKey
   autocmd!
   autocmd User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
         \| autocmd! LoadVimWhichKey
-augroup END
-
-" EDITOR: VIM-VISUAL-MULTI
-augroup LoadVimVisualMulti
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-visual-multi')
-        \| autocmd! LoadVimVisualMulti
-        \| let g:VM_default_mappings = 1
-augroup END
-
-" EDITOR: VIM-TEXTOBJ-USER
-" EDITOR: VIM-TEXTOBJ-INDENT
-" EDITOR: VIM-TEXTOBJ-COMMENT
-augroup LoadVimTextObj
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-textobj-user', 'vim-textobj-indent', 'vim-textobj-comment')
-        \| autocmd! LoadVimTextObj
-augroup END
-
-" EDITOR: TARGETS.VIM
-augroup LoadTargets
-  autocmd!
-  autocmd BufReadPost * call plug#load('targets.vim')
-        \| autocmd! LoadTargets
-augroup END
-
-" EDITOR: VIM-MOVE
-augroup LoadVimMove
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-move')
-        \| autocmd! LoadVimMove
-        \| let g:move_map_keys = 0
-        \| vmap <C-j> <Plug>MoveBlockDown
-        \| vmap <C-k> <Plug>MoveBlockUp
-        \| vmap <C-h> <Plug>MoveBlockLeft
-        \| vmap <C-l> <Plug>MoveBlockRight
 augroup END
 
 " LINTING: ALE
@@ -593,28 +415,6 @@ augroup LoadCompletionLspSnippet
         \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact']
         \ })
         \| endif
-        \| if executable('lua-language-server')
-        \| call lsp#register_server({
-        \ 'name': 'lua-language-server',
-        \ 'cmd': { server_info -> ['lua-language-server'] },
-        \ 'whitelist': ['lua']
-        \ })
-        \| endif
-        \| if executable('gopls')
-        \| call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': { server_info -> ['gopls', '-remote=auto'] },
-        \ 'whitelist': ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl']
-        \ })
-        \| endif
-        \| if executable('vim-language-server')
-        \| call lsp#register_server({
-        \ 'name': 'vim-language-server',
-        \ 'cmd': { server_info -> ['vim-language-server', '--stdio'] },
-        \ 'whitelist': ['vim'],
-        \ 'initialization_options': { 'vimruntime': $VIMRUNTIME, 'runtimepath': &rtp }
-        \ })
-        \| endif
 augroup END
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
@@ -642,28 +442,8 @@ augroup LspInstall
         \| autocmd! LspInstall
 augroup END
 
-" TOOL: VIM-SLIME
-augroup LoadVimSlime
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-slime')
-        \| autocmd! LoadVimSlime
-        \| let g:slime_target = "vimterminal"
-        \| let g:slime_cell_delimiter = "#%%"
-        \| let g:slime_no_mappings = 1
-        \| let g:slime_dont_ask_default = 1
-        \| nmap <leader>sc :SlimeConfig<cr>
-        \| nmap <leader>sl <Plug>SlimeLineSend
-        \| vmap <leader>sr <Plug>SlimeRegionSend
-augroup END
-
 " TOOL: QUICKRUN
 nnoremap <leader>tr :QuickRun<cr>
-
-" TOOL: NERDTREE
-" TOOL: NERDTREE-GIT-PLUGIN
-let g:NERDTreeWinSize = 23
-let g:NERDTreeShowHidden = 1
-nnoremap <leader>tn :NERDTreeToggle<cr>
 
 " TOOL: FZF
 " TOOL: FZF.VIM
@@ -676,45 +456,6 @@ nnoremap <leader>fs :BLines<cr>
 nnoremap <leader>fr :History<cr>
 nnoremap <leader>fc :Colors<cr>
 nnoremap <leader><leader> :Commands<cr>
-
-" TOOL: VISTA
-let g:vista_default_executive = 'vim_lsp'
-nnoremap <leader>lo :Vista!!<cr>
-
-" TOOL: UNDOTREE
-nnoremap <leader>tu :UndotreeToggle<cr>
-
-" TOOL: LIMELIGHT
-let g:limelight_conceal_ctermfg = 240
-let g:limelight_default_coefficient = 0.7
-
-" TOOL: EASYMOTION
-let g:EasyMotion_do_mapping = 0
-map <leader>gl <Plug>(easymotion-bd-jk)
-map <leader>gw <Plug>(easymotion-bd-w)
-
-" TOOL: VIM-SNEAK
-augroup LoadVimSneak
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-sneak')
-        \| autocmd! LoadVimSneak
-augroup END
-
-" TOOL: VIM-FLOATERM
-let g:floaterm_wintype = 'float'
-let g:floaterm_height = 0.88
-let g:floaterm_width = 0.92
-nnoremap <silent><F1> :FloatermNew<cr>
-tnoremap <silent><F1> <C-\><C-n>:FloatermNew<cr>
-nnoremap <silent><F2> :FloatermPrev<cr>
-tnoremap <silent><F2> <C-\><C-n>:FloatermPrev<cr>
-nnoremap <silent><F3> :FloatermToggle<cr>
-tnoremap <silent><F3> <C-\><C-n>:FloatermToggle<cr>
-nnoremap <silent><F4> :FloatermNext<cr>
-tnoremap <silent><F4> <C-\><C-n>:FloatermNext<cr>
-
-" TOOL: VIM-STARTUPTIME
-nnoremap <leader>tt :StartupTime<cr>
 
 " FORMATTING: NEOFORMAT
 nnoremap <leader>lf :Neoformat<cr>
