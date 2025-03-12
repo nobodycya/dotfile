@@ -1,14 +1,14 @@
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
 
 i {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   font-size: 10px;
 }
 
 body {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   font-family: 'Segoe UI', 'JetBrainsMono Nerd Font', ui-monospace, monospace;
   font-size: 11px;
   font-weight: 500;
@@ -21,8 +21,8 @@ body,
 }
 
 #root {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
 }
 
 .app {
@@ -50,10 +50,10 @@ body,
 
 /* LEFT */
 .logo {
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   font-size: 15px;
   margin-left: 4px;
   margin-right: 4px;
@@ -66,10 +66,10 @@ body,
 }
 
 .workspace {
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: #222222;
+  color: #535d6c;
   cursor: pointer;
   font-size: 11px;
   font-weight: 700;
@@ -77,25 +77,25 @@ body,
   margin: 2px;
 
   &.displayed {
-    border: 2px solid #45475a;
+    border: 2px solid #535d6c;
     border-radius: 4px;
-    background: #1e1e2e;
-    color: #cdd6f4;
+    background: #222222;
+    color: #535d6c;
     padding: 4px 8px;
   }
 
   &.focused {
-    border: 2px solid #45475a;
+    border: 2px solid #535d6c;
     border-radius: 4px;
-    background: #1e1e2e;
-    color: #f38ba8;
+    background: #222222;
+    color: #aaaaaa;
     padding: 4px 8px;
   }
 }
 
 .title {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -106,10 +106,10 @@ body,
 
 /* RIGHT */
 .paused-button {
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
-  background: #11111b;
-  color: #f2cdcd;
+  background: #222222;
+  color: #aaaaaa;
   font-weight: 600;
   padding: 4px 8px 4px 8px;
   margin-left: 4px;
@@ -118,14 +118,14 @@ body,
 
 .paused-button i {
   margin-right: 4px;
-  color: #f2cdcd;
+  color: #aaaaaa;
 }
 
 .binding-mode {
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
-  background: #11111b;
-  color: #f5e0dc;
+  background: #222222;
+  color: #aaaaaa;
   font-weight: 600;
   padding: 4px 8px 4px 8px;
   margin-left: 4px;
@@ -134,14 +134,14 @@ body,
 
 .binding-mode i {
   margin-right: 4px;
-  color: #f5e0dc
+  color: #aaaaaa
 }
 
 .tiling-direction {
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
-  background: #11111b;
-  color: #f5c2e7;
+  background: #222222;
+  color: #aaaaaa;
   cursor: pointer;
   line-height: 1;
   font-size: 13px;
@@ -156,32 +156,32 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
   padding: 4px;
 }
 
 .cpu .text {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   white-space: nowrap;
 }
 
 .cpu i {
   margin-right: 4px;
-  color: #a6e3a1;
+  color: #00ff00;
 }
 
 .cpu i.high {
-  color: #f38ba8;
+  color: #ff0000;
 }
 
 .cpu i.medium {
-  color: #fab387;
+  color: #ffa500;
 }
 
 .cpu i.light {
-  color: #f9e2af;
+  color: #ffff00;
 }
 
 .memory {
@@ -189,32 +189,32 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
   padding: 4px;
 }
 
 .memory .text {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   white-space: nowrap;
 }
 
 .memory i {
   margin-right: 4px;
-  color: #a6e3a1;
+  color: #00ff00;
 }
 
 .memory i.high {
-  color: #f38ba8;
+  color: #ff0000;
 }
 
 .memory i.medium {
-  color: #fab387;
+  color: #ffa500;
 }
 
 .memory i.light {
-  color: #f9e2af;
+  color: #ffff00;
 }
 
 .audio {
@@ -222,32 +222,32 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
   padding: 4px;
 }
 
 .audio .text {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   white-space: nowrap;
 }
 
 .audio i {
   margin-right: 4px;
-  color: #cdd6f4;
+  color: #aaaaaa;
 }
 
 .audio i.high {
-  color: #f38ba8;
+  color: #ff0000;
 }
 
 .audio i.medium {
-  color: #fab387;
+  color: #ffa500;
 }
 
 .audio i.light {
-  color: #f9e2af;
+  color: #ffff00;
 }
 
 .battery {
@@ -255,81 +255,81 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
   padding: 4px;
 }
 
 .battery .text {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   white-space: nowrap;
 }
 
 .battery i {
   margin-right: 4px;
-  color: #f38ba8;
+  color: #ff0000;
 }
 
 .battery i.high {
-  color: #a6e3a1;
+  color: #00ff00;
 }
 
 .battery i.medium {
-  color: #fab387;
+  color: #ffa500;
 }
 
 .battery i.light {
-  color: #f9e2af;
+  color: #ffff00;
 }
 
 .network_down {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
 }
 
 .network_down i {
-  background: #11111b;
-  color: #89dceb;
+  background: #222222;
+  color: #aaaaaa;
   margin-right: 8px;
 }
 
 .network_up {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
 }
 
 .network_up i {
-  background: #11111b;
-  color: #cba6f7;
+  background: #222222;
+  color: #aaaaaa;
   margin-right: 8px;
 }
 
 .date {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #45475a;
+  border: 2px solid #535d6c;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
 }
 
 .date i {
-  background: #11111b;
-  color: #cdd6f4;
+  background: #222222;
+  color: #aaaaaa;
   margin-right: 4px;
 }
