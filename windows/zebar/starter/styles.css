@@ -169,7 +169,7 @@ body,
 
 .cpu i {
   margin-right: 4px;
-  color: #00ff00;
+  color: #aaaaaa;
 }
 
 .cpu i.high {
@@ -180,7 +180,7 @@ body,
   color: #ffa500;
 }
 
-.cpu i.light {
+.cpu i.low {
   color: #ffff00;
 }
 
@@ -202,7 +202,7 @@ body,
 
 .memory i {
   margin-right: 4px;
-  color: #00ff00;
+  color: #aaaaaa;
 }
 
 .memory i.high {
@@ -213,7 +213,7 @@ body,
   color: #ffa500;
 }
 
-.memory i.light {
+.memory i.low {
   color: #ffff00;
 }
 
@@ -246,7 +246,7 @@ body,
   color: #ffa500;
 }
 
-.audio i.light {
+.audio i.low {
   color: #ffff00;
 }
 
@@ -272,14 +272,14 @@ body,
 }
 
 .battery i.high {
-  color: #00ff00;
+  color: #aaaaaa;
 }
 
 .battery i.medium {
   color: #ffa500;
 }
 
-.battery i.light {
+.battery i.low {
   color: #ffff00;
 }
 
