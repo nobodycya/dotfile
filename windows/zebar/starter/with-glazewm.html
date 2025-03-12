@@ -124,7 +124,7 @@
             {
               output.cpu && (
                 <div className="cpu">
-                  <i className={`nf nf-oct-cpu ${output.cpu.usage > 90 ? 'high' : output.cpu.usage > 60 ? 'medium' : output.cpu.usage > 30 ? 'light' : ''}`}></i>
+                  <i className={`nf nf-oct-cpu ${output.cpu.usage > 80 ? 'high' : output.cpu.usage > 50 ? 'medium' : output.cpu.usage > 30 ? 'low' : ''}`}></i>
                   <span className="text">{Math.round(output.cpu.usage)}%</span>
                 </div>
               )
@@ -132,7 +132,7 @@
             {
               output.memory && (
                 <div className="memory">
-                  <i className={`nf nf-oct-stack ${output.memory.usage > 90 ? 'high' : output.memory.usage > 60 ? 'medium' : output.memory.usage > 30 ? 'light' : ''}`}></i>
+                  <i className={`nf nf-oct-stack ${output.memory.usage > 80 ? 'high' : output.memory.usage > 50 ? 'medium' : output.memory.usage > 30 ? 'low' : ''}`}></i>
                   <span className="text">{Math.round(output.memory.usage)}%</span>
                 </div>
               )
@@ -140,7 +140,7 @@
             {
               output.audio && (
                 <div className="audio">
-                  <i className={`nf nf-md-volume_high ${output.audio.defaultPlaybackDevice?.volume > 70 ? 'high' : output.audio.defaultPlaybackDevice?.volume > 50 ? 'medium' : output.audio.defaultPlaybackDevice?.volume > 20 ? 'light' : ''}`}></i>
+                  <i className={`nf nf-md-volume_high ${output.audio.defaultPlaybackDevice?.volume > 70 ? 'high' : output.audio.defaultPlaybackDevice?.volume > 50 ? 'medium' : output.audio.defaultPlaybackDevice?.volume > 30 ? 'low' : ''}`}></i>
                   <span className="text">{Math.round(output.audio.defaultPlaybackDevice?.volume)}%</span>
                 </div>
               )
@@ -148,7 +148,7 @@
             {
               output.battery && (
                 <div className="battery">
-                  <i className={`nf nf-oct-battery ${output.battery.chargePercent > 90 ? 'high' : output.battery.chargePercent > 60 ? 'medium' : output.battery.chargePercent > 30 ? 'light' : ''}`}></i>
+                  <i className={`nf nf-oct-battery ${output.battery.chargePercent > 90 ? 'high' : output.battery.chargePercent > 60 ? 'medium' : output.battery.chargePercent > 30 ? 'low' : ''}`}></i>
                   <span className="text">{Math.round(output.battery.chargePercent)}%</span>
                 </div>
               )
