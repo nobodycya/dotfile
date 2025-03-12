@@ -1,14 +1,14 @@
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
 
 i {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   font-size: 10px;
 }
 
 body {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   font-family: 'Segoe UI', 'JetBrainsMono Nerd Font', ui-monospace, monospace;
   font-size: 11px;
   font-weight: 500;
@@ -21,8 +21,8 @@ body,
 }
 
 #root {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
 }
 
 .app {
@@ -50,10 +50,10 @@ body,
 
 /* LEFT */
 .logo {
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   font-size: 15px;
   margin-left: 4px;
   margin-right: 4px;
@@ -66,10 +66,10 @@ body,
 }
 
 .workspace {
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
-  background: #222222;
-  color: #535d6c;
+  background: #000000;
+  color: #555555;
   cursor: pointer;
   font-size: 11px;
   font-weight: 700;
@@ -77,25 +77,25 @@ body,
   margin: 2px;
 
   &.displayed {
-    border: 2px solid #535d6c;
+    border: 2px solid #555555;
     border-radius: 4px;
-    background: #222222;
-    color: #535d6c;
+    background: #000000;
+    color: #555555;
     padding: 4px 8px;
   }
 
   &.focused {
-    border: 2px solid #535d6c;
+    border: 2px solid #555555;
     border-radius: 4px;
-    background: #222222;
-    color: #aaaaaa;
+    background: #000000;
+    color: #ffffff;
     padding: 4px 8px;
   }
 }
 
 .title {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -106,10 +106,10 @@ body,
 
 /* RIGHT */
 .paused-button {
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   font-weight: 600;
   padding: 4px 8px 4px 8px;
   margin-left: 4px;
@@ -118,14 +118,14 @@ body,
 
 .paused-button i {
   margin-right: 4px;
-  color: #aaaaaa;
+  color: #ffffff;
 }
 
 .binding-mode {
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   font-weight: 600;
   padding: 4px 8px 4px 8px;
   margin-left: 4px;
@@ -134,14 +134,14 @@ body,
 
 .binding-mode i {
   margin-right: 4px;
-  color: #aaaaaa
+  color: #ffffff
 }
 
 .tiling-direction {
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   cursor: pointer;
   line-height: 1;
   font-size: 13px;
@@ -156,20 +156,20 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
   padding: 4px;
 }
 
 .cpu .text {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   white-space: nowrap;
 }
 
 .cpu i {
   margin-right: 4px;
-  color: #aaaaaa;
+  color: #ffffff;
 }
 
 .cpu i.high {
@@ -189,20 +189,20 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
   padding: 4px;
 }
 
 .memory .text {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   white-space: nowrap;
 }
 
 .memory i {
   margin-right: 4px;
-  color: #aaaaaa;
+  color: #ffffff;
 }
 
 .memory i.high {
@@ -222,20 +222,20 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
   padding: 4px;
 }
 
 .audio .text {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   white-space: nowrap;
 }
 
 .audio i {
   margin-right: 4px;
-  color: #aaaaaa;
+  color: #ffffff;
 }
 
 .audio i.high {
@@ -255,14 +255,14 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
   padding: 4px;
 }
 
 .battery .text {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   white-space: nowrap;
 }
 
@@ -272,7 +272,7 @@ body,
 }
 
 .battery i.high {
-  color: #aaaaaa;
+  color: #ffffff;
 }
 
 .battery i.medium {
@@ -284,52 +284,52 @@ body,
 }
 
 .network_down {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
 }
 
 .network_down i {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   margin-right: 8px;
 }
 
 .network_up {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
 }
 
 .network_up i {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   margin-right: 8px;
 }
 
 .date {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #535d6c;
+  border: 2px solid #555555;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
 }
 
 .date i {
-  background: #222222;
-  color: #aaaaaa;
+  background: #000000;
+  color: #ffffff;
   margin-right: 4px;
 }
