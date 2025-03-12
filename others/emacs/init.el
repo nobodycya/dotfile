@@ -279,21 +279,6 @@
   (("M-n" . flymake-goto-next-error)
    ("M-p" . flymake-goto-prev-error)))
 
-(use-package doom-themes
-  :hook (after-init . (lambda () (load-theme 'doom-one t))))
-
-(use-package doom-modeline
-  :hook (after-init . doom-modeline-mode)
-  :config
-  (setq doom-modeline-minor-modes t)
-  (setq doom-modeline-height 25)
-  (setq doom-modeline-bar-width 5))
-
-(use-package solaire-mode
-  :defer 5
-  :config
-  (solaire-global-mode))
-
 (use-package evil
   :hook
   (prog-mode . evil-mode)
@@ -333,9 +318,6 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package colorful-mode
-  :hook (prog-mode . global-colorful-mode))
-
 (use-package hl-todo
   :hook (prog-mode . hl-todo-mode)
   :config
@@ -349,9 +331,6 @@
           ("NOTE" success bold)
           ("BUG" error bold)
           ("XXX" font-lock-constant-face bold))))
-
-(use-package diredfl
-  :hook (dired-mode . diredfl-mode))
 
 (use-package corfu
   :hook
@@ -441,9 +420,6 @@
   :init
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
-(use-package git-gutter
-  :hook (prog-mode . global-git-gutter-mode))
-
 (use-package gcmh
   :hook (after-init . gcmh-mode)
   :config
@@ -452,24 +428,8 @@
 (use-package xclip
   :hook (after-init . xclip-mode))
 
-(use-package elisp-def
-  :hook (emacs-lisp-mode . elisp-def-mode))
-
-(use-package highlight-numbers
-  :hook (prog-mode . highlight-numbers-mode))
-
-(use-package highlight-quoted
-  :hook (emacs-lisp-mode . highlight-quoted-mode))
-
-(use-package highlight-defined
-  :hook (emacs-lisp-mode . highlight-defined-mode))
-
-(use-package auto-highlight-symbol
-  :hook (prog-mode . global-auto-highlight-symbol-mode)
-  :config
-  (setq ahs-idle-interval 0.5))
-
 (use-package symbol-overlay
+  :hook (prog-mode . symbol-overlay-mode)
   :bind
   (("M-i" . symbol-overlay-put)
    ("M-g M-n" . symbol-overlay-switch-forward)
@@ -483,16 +443,6 @@
    ([remap describe-variable] . helpful-variable)
    ([remap describe-command] . helpful-command)
    ("C-c C-d" . helpful-at-point)))
-
-(use-package quickrun
-  :commands (quickrun)
-  :config
-  (setq quickrun-focus-p nil))
-
-(use-package esup
-  :commands (esup)
-  :config
-  (setq esup-depth 0))
 
 (provide 'init)
 ;;; Local Variables:
