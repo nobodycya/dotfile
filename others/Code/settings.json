@@ -16,6 +16,7 @@
     ],
     "window.zoomLevel": -0.5,
     "workbench.startupEditor": "none",
+    "workbench.panel.showLabels": false,
     "terminal.integrated.minimumContrastRatio": 1,
     "[python]": {
         "editor.tabSize": 4
