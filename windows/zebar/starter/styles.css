@@ -172,15 +172,15 @@ body,
 }
 
 .cpu i.high {
-  color: #c63178;
+  color: #d43359;
 }
 
 .cpu i.medium {
-  color: #c67f31;
+  color: #f7df1e;
 }
 
 .cpu i.low {
-  color: #78c631;
+  color: #66A182;
 }
 
 .memory {
@@ -205,15 +205,15 @@ body,
 }
 
 .memory i.high {
-  color: #c63178;
+  color: #d43359;
 }
 
 .memory i.medium {
-  color: #c67f31;
+  color: #f7df1e;
 }
 
 .memory i.low {
-  color: #78c631;
+  color: #66a182;
 }
 
 .audio {
@@ -238,15 +238,15 @@ body,
 }
 
 .audio i.high {
-  color: #c63178;
+  color: #d43359;
 }
 
 .audio i.medium {
-  color: #c67f31;
+  color: #f7df1e;
 }
 
 .audio i.low {
-  color: #78c631;
+  color: #66a182;
 }
 
 .battery {
@@ -267,19 +267,19 @@ body,
 
 .battery i {
   margin-right: 4px;
-  color: #ffffff;
+  color: #d43359;
 }
 
 .battery i.high {
-  color: #78c631;
+  color: #66a182;
 }
 
 .battery i.medium {
-  color: #c67f31;
+  color: #f7df1e;
 }
 
 .battery i.low {
-  color: #c63178;
+  color: #d43359;
 }
 
 .network_down {
@@ -295,7 +295,7 @@ body,
 
 .network_down i {
   background: #000000;
-  color: #ffffff;
+  color: #CCE6F4;
   margin-right: 8px;
 }
 
@@ -312,7 +312,7 @@ body,
 
 .network_up i {
   background: #000000;
-  color: #ffffff;
+  color: #3178C6;
   margin-right: 8px;
 }
 
