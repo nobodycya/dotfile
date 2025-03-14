@@ -3,7 +3,7 @@
 i {
   background: #000000;
   color: #ffffff;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 body {
@@ -11,7 +11,6 @@ body {
   color: #ffffff;
   font-family: 'Segoe UI', 'JetBrainsMono Nerd Font', ui-monospace, monospace;
   font-size: 11px;
-  font-weight: 500;
 }
 
 html,
@@ -72,7 +71,6 @@ body,
   color: #ffffff;
   cursor: pointer;
   font-size: 11px;
-  font-weight: 700;
   padding: 4px 8px;
   margin: 2px;
 
@@ -89,6 +87,7 @@ body,
     border-radius: 4px;
     background: #000000;
     color: #3178c6;
+    font-weight: 900;
     padding: 4px 8px;
   }
 }
