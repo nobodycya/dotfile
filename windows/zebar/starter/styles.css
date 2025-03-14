@@ -50,10 +50,10 @@ body,
 
 /* LEFT */
 .logo {
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   background: #000000;
-  color: #ffffff;
+  color: #3178c6;
   font-size: 15px;
   margin-left: 4px;
   margin-right: 4px;
@@ -66,10 +66,10 @@ body,
 }
 
 .workspace {
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   background: #000000;
-  color: #555555;
+  color: #ffffff;
   cursor: pointer;
   font-size: 11px;
   font-weight: 700;
@@ -77,18 +77,18 @@ body,
   margin: 2px;
 
   &.displayed {
-    border: 2px solid #555555;
+    border: 2px solid #222222;
     border-radius: 4px;
     background: #000000;
-    color: #555555;
+    color: #ffffff;
     padding: 4px 8px;
   }
 
   &.focused {
-    border: 2px solid #555555;
+    border: 2px solid #222222;
     border-radius: 4px;
     background: #000000;
-    color: #ffffff;
+    color: #3178c6;
     padding: 4px 8px;
   }
 }
@@ -106,10 +106,10 @@ body,
 
 /* RIGHT */
 .paused-button {
-  border: 2px solid #555555;
+  border: 2px solid #3178c6;
   border-radius: 4px;
   background: #000000;
-  color: #ffffff;
+  color: #3178c6;
   font-weight: 600;
   padding: 4px 8px 4px 8px;
   margin-left: 4px;
@@ -118,14 +118,14 @@ body,
 
 .paused-button i {
   margin-right: 4px;
-  color: #ffffff;
+  color: #3178c6;
 }
 
 .binding-mode {
-  border: 2px solid #555555;
+  border: 2px solid #3178c6;
   border-radius: 4px;
   background: #000000;
-  color: #ffffff;
+  color: #3178c6;
   font-weight: 600;
   padding: 4px 8px 4px 8px;
   margin-left: 4px;
@@ -134,14 +134,14 @@ body,
 
 .binding-mode i {
   margin-right: 4px;
-  color: #ffffff
+  color: #3178c6;
 }
 
 .tiling-direction {
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   background: #000000;
-  color: #ffffff;
+  color: #3178c6;
   cursor: pointer;
   line-height: 1;
   font-size: 13px;
@@ -156,7 +156,7 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   padding: 4px;
 }
@@ -173,15 +173,15 @@ body,
 }
 
 .cpu i.high {
-  color: #ff0000;
+  color: #c63178;
 }
 
 .cpu i.medium {
-  color: #ffa500;
+  color: #c67f31;
 }
 
 .cpu i.low {
-  color: #ffff00;
+  color: #78c631;
 }
 
 .memory {
@@ -189,7 +189,7 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   padding: 4px;
 }
@@ -206,15 +206,15 @@ body,
 }
 
 .memory i.high {
-  color: #ff0000;
+  color: #c63178;
 }
 
 .memory i.medium {
-  color: #ffa500;
+  color: #c67f31;
 }
 
 .memory i.low {
-  color: #ffff00;
+  color: #78c631;
 }
 
 .audio {
@@ -222,7 +222,7 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   padding: 4px;
 }
@@ -239,15 +239,15 @@ body,
 }
 
 .audio i.high {
-  color: #ff0000;
+  color: #c63178;
 }
 
 .audio i.medium {
-  color: #ffa500;
+  color: #c67f31;
 }
 
 .audio i.low {
-  color: #ffff00;
+  color: #78c631;
 }
 
 .battery {
@@ -255,7 +255,7 @@ body,
   align-items: center;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   padding: 4px;
 }
@@ -268,19 +268,19 @@ body,
 
 .battery i {
   margin-right: 4px;
-  color: #ff0000;
-}
-
-.battery i.high {
   color: #ffffff;
 }
 
+.battery i.high {
+  color: #78c631;
+}
+
 .battery i.medium {
-  color: #ffa500;
+  color: #c67f31;
 }
 
 .battery i.low {
-  color: #ffff00;
+  color: #c63178;
 }
 
 .network_down {
@@ -288,7 +288,7 @@ body,
   color: #ffffff;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
@@ -305,7 +305,7 @@ body,
   color: #ffffff;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
@@ -322,7 +322,7 @@ body,
   color: #ffffff;
   margin-left: 4px;
   margin-right: 4px;
-  border: 2px solid #555555;
+  border: 2px solid #222222;
   border-radius: 4px;
   padding: 4px;
   white-space: nowrap;
