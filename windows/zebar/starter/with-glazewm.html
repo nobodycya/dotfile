@@ -148,7 +148,7 @@
             {
               output.battery && (
                 <div className="battery">
-                  <i className={`nf nf-oct-battery ${output.battery.chargePercent > 80 ? 'high' : output.battery.chargePercent > 50 ? 'medium' : output.battery.chargePercent > 20 ? 'low' : ''}`}></i>
+                  <i className={`nf nf-fa-battery_4 ${output.battery.chargePercent > 80 ? 'high' : output.battery.chargePercent > 50 ? 'medium' : output.battery.chargePercent > 20 ? 'low' : ''}`}></i>
                   <span className="text">{Math.round(output.battery.chargePercent)}%</span>
                 </div>
               )
