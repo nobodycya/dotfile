@@ -165,8 +165,6 @@ nnoremap <leader>P :PlugStatus<cr>
 
 " INSTALL PLUGINS:
 call plug#begin()
-" SYNTAX
-Plug 'sheerun/vim-polyglot', { 'on': [] }
 " UI
 Plug 'mhinz/vim-startify', { 'on': [] }
 Plug 'morhetz/gruvbox', { 'on': [] }
@@ -176,11 +174,6 @@ Plug 'machakann/vim-highlightedyank', { 'on': [] }
 Plug 'LunarWatcher/auto-pairs', { 'on': [] }
 Plug 'luochen1990/rainbow', { 'on': [] }
 Plug 'tpope/vim-commentary', { 'on': [] }
-if has('conceal')
-  Plug 'Yggdroot/indentLine', { 'on': [] }
-endif
-Plug 'airblade/vim-gitgutter', { 'on': [] }
-Plug 'ap/vim-css-color', { 'on': [] }
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " LINTING
 Plug 'dense-analysis/ale', { 'on': [] }
@@ -199,16 +192,7 @@ Plug 'hrsh7th/vim-vsnip-integ', { 'on': [] }
 Plug 'thinca/vim-quickrun', { 'on': ['QuickRun'] }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Buffers', 'Colors', 'Lines', 'BLines', 'History', 'Commands', 'Rg'] }
-" FORMATTING
-Plug 'sbdchd/neoformat', { 'on': ['Neoformat'] }
 call plug#end()
-
-" SYNTAX: VIM-POLYGLOT
-augroup LoadVimPolyglot
-  autocmd!
-  autocmd InsertEnter * call plug#load('vim-polyglot')
-        \| autocmd! LoadVimPolyglot
-augroup END
 
 " UI: VIM-STARTIFY
 augroup LoadVimStartify
@@ -287,36 +271,12 @@ augroup LoadVimCommentary
         \| autocmd! LoadVimCommentary
 augroup END
 
-" EDITOR: INDENTLINE
-augroup LoadIndentLine
-  autocmd!
-  autocmd BufReadPost * call plug#load('indentLine')
-        \| autocmd! LoadIndentLine
-        \| let g:indentLine_char_list = ['│']
-augroup END
-
-" EDITOR: VIM-GITGUTTER
-augroup LoadVimGitGutter
-  autocmd!
-  autocmd InsertEnter * call plug#load('vim-gitgutter')
-        \| autocmd! LoadVimGitGutter
-        \| call gitgutter#enable()
-augroup END
-
-" EDITOR: VIM-CSS-COLOR
-augroup LoadVimCSSColor
-  autocmd!
-  autocmd BufReadPost * call plug#load('vim-css-color')
-        \| autocmd! LoadVimCSSColor
-augroup END
-
 " EDITOR: VIM-WHICH-KEY
 nnoremap <silent><leader> :<C-u>WhichKey '<Space>'<cr>
 nnoremap <silent><localleader> :<C-u>WhichKey ','<cr>
 let g:which_key_map = {}
 let g:which_key_map['l'] = {
       \ 'name': '+LSP',
-      \ 'f': [':Neoformat', 'Format'],
       \ 'o': [':Vista!!', 'Outline'],
       \ }
 let g:which_key_map['C'] = {
@@ -456,6 +416,3 @@ nnoremap <leader>fs :BLines<cr>
 nnoremap <leader>fr :History<cr>
 nnoremap <leader>fc :Colors<cr>
 nnoremap <leader><leader> :Commands<cr>
-
-" FORMATTING: NEOFORMAT
-nnoremap <leader>lf :Neoformat<cr>
